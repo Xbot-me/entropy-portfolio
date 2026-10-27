@@ -68,6 +68,9 @@ export function startResidualEngine(): () => void {
   const root = document.documentElement;
   const body = document.body;
   const profile = readProfile();
+  const meter = document.querySelector<HTMLElement>(".signal-meter");
+  const meterState = document.querySelector<HTMLElement>("[data-signal-state]");
+  const meterFill = document.querySelector<HTMLElement>("[data-signal-fill]");
   const now = () => performance.now();
   let pressure = 0;
   let chaotic = 0.2 + Math.random() * 0.6;
@@ -136,6 +139,10 @@ export function startResidualEngine(): () => void {
     root.style.setProperty("--echo-y", (Math.cos(chaotic * 11) * ratio * (profile.coarsePointer ? 1.5 : 3.5)).toFixed(2) + "px");
     body.classList.toggle("is-pressured", effective > 0.28);
     body.classList.toggle("is-recovering", recovering);
+    const state = recovering ? "recovery" : effective > profile.ceiling * 0.62 ? "interference" : effective > profile.ceiling * 0.22 ? "in motion" : "stable";
+    if (meter) meter.dataset.state = state.replace(" ", "-");
+    if (meterState) meterState.textContent = state.toUpperCase();
+    if (meterFill) meterFill.style.setProperty("--meter-value", ratio.toFixed(3));
 
     for (const region of regions) {
       const local = clamp(region.local, 0, profile.ceiling);
@@ -168,6 +175,7 @@ export function startResidualEngine(): () => void {
     lastTick = timestamp;
 
     // Re-sample velocity-derived inputs at a stable 30 Hz model cadence.
+    const idleFor = timestamp - lastInput;
     const modelDue = timestamp - lastModelUpdate >= 1000 / 30;
     if (modelDue) {
       const modelDt = clamp((timestamp - lastModelUpdate) / 1000, 0, 0.05);
@@ -176,7 +184,6 @@ export function startResidualEngine(): () => void {
       directionChanges *= Math.exp(-modelDt * 1.8);
       pointerVelocity *= Math.exp(-modelDt * 3.2);
       keyboardImpulse *= Math.exp(-modelDt * 5.5);
-      const idleFor = timestamp - lastInput;
       if (activeRegion && idleFor < 500) hoverDwell = clamp((timestamp - activeRegion.dwellStart) / 1200, 0, 1);
       else {
         hoverDwell *= Math.exp(-modelDt * 2.4);
@@ -188,7 +195,7 @@ export function startResidualEngine(): () => void {
       const accelA = clamp(scrollAcceleration);
       const directionA = clamp(directionChanges);
       const pointerA = clamp(pointerVelocity);
-      const proximityA = clamp(proximity);
+      const proximityA = clamp(proximity * Math.exp(-Math.max(0, idleFor - 180) / 520));
       const hoverA = clamp(hoverDwell);
       const keyboardA = clamp(keyboardImpulse);
       const activity =
@@ -200,7 +207,7 @@ export function startResidualEngine(): () => void {
       scrollAcceleration *= Math.exp(-modelDt * 3.2);
 
       const normalRecovery = profile.baseRecovery;
-      const currentRecovery = timestamp < recoveryUntil ? Math.max(normalRecovery, 1.4) : normalRecovery;
+      const currentRecovery = recovering ? Math.max(normalRecovery, 1.4) : normalRecovery;
       const kAttack = 2.8;
       const lambda = kAttack * input + currentRecovery;
       const equilibrium = lambda > 0 ? (kAttack * input) / lambda : 0;
@@ -228,7 +235,7 @@ export function startResidualEngine(): () => void {
       }
 
       for (const region of regions) {
-        const localTarget = clamp(0.5 * pressure + 0.35 * (region === activeRegion ? proximity : 0) + 0.15 * (region === activeRegion ? hoverDwell : 0));
+        const localTarget = clamp(0.5 * pressure + 0.35 * (region === activeRegion ? proximityA : 0) + 0.15 * (region === activeRegion ? hoverDwell : 0));
         const rate = region === activeRegion ? 5.5 : 2.8;
         region.local = smoothToward(region.local, localTarget, rate, modelDt);
         region.local = clamp(region.local, 0, profile.ceiling);
