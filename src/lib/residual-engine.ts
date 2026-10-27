@@ -171,13 +171,18 @@ export function startResidualEngine(): () => void {
     // Re-sample velocity-derived inputs at a stable 30 Hz model cadence.
     const modelDue = timestamp - lastModelUpdate >= 1000 / 30;
     if (modelDue) {
+      const modelDt = clamp((timestamp - lastModelUpdate) / 1000, 0, 0.05);
       lastModelUpdate = timestamp;
       clicks = clicks.filter(t => timestamp - t < 1500);
-      directionChanges *= Math.exp(-dt * 1.8);
-      pointerVelocity *= Math.exp(-dt * 3.2);
-      keyboardImpulse *= Math.exp(-dt * 5.5);
-      if (activeRegion) hoverDwell = clamp((timestamp - activeRegion.dwellStart) / 1200, 0, 1);
-      else hoverDwell *= Math.exp(-dt * 4);
+      directionChanges *= Math.exp(-modelDt * 1.8);
+      pointerVelocity *= Math.exp(-modelDt * 3.2);
+      keyboardImpulse *= Math.exp(-modelDt * 5.5);
+      const idleFor = timestamp - lastInput;
+      if (activeRegion && idleFor < 500) hoverDwell = clamp((timestamp - activeRegion.dwellStart) / 1200, 0, 1);
+      else {
+        hoverDwell *= Math.exp(-modelDt * 2.4);
+        proximity *= Math.exp(-modelDt * 1.8);
+      }
 
       const clickBurst = clamp(clicks.length / 4);
       const scrollA = clamp(scrollVelocity);
@@ -192,13 +197,15 @@ export function startResidualEngine(): () => void {
          0.12 * pointerA + 0.16 * proximityA + 0.08 * hoverA +
          0.10 * clickBurst + 0.04 * keyboardA) * profile.inputGain;
       const input = clamp(activity / 0.96);
+      scrollVelocity *= Math.exp(-modelDt * 2.2);
+      scrollAcceleration *= Math.exp(-modelDt * 3.2);
 
       const normalRecovery = profile.baseRecovery;
       const currentRecovery = recovering ? Math.max(normalRecovery, 1.4) : normalRecovery;
       const kAttack = 2.8;
       const lambda = kAttack * input + currentRecovery;
       const equilibrium = lambda > 0 ? (kAttack * input) / lambda : 0;
-      pressure = equilibrium + (pressure - equilibrium) * Math.exp(-lambda * dt);
+      pressure = equilibrium + (pressure - equilibrium) * Math.exp(-lambda * modelDt);
       if (input === 0 && pressure < 0.004) pressure = 0;
 
       // A driven logistic map supplies bounded irregularity; pressure decides how much is visible.
@@ -210,21 +217,21 @@ export function startResidualEngine(): () => void {
 
       if (pressure > 0.72 && !recovering) recovering = true;
       if (recovering && pressure < 0.48 && timestamp >= recoveryUntil) recovering = false;
-      if (pressure > 0.78) timeAtHighPressure += dt;
-      else timeAtHighPressure = Math.max(0, timeAtHighPressure - dt * 2);
+      if (pressure > 0.78) timeAtHighPressure += modelDt;
+      else timeAtHighPressure = Math.max(0, timeAtHighPressure - modelDt * 2);
       if ((pressure > 0.88 || timeAtHighPressure > 1.2) && timestamp >= recoveryUntil) {
         recoveryUntil = timestamp + 1800;
         recovering = true;
         timeAtHighPressure = 0;
       }
       if (recovering && timestamp < recoveryUntil) {
-        pressure = smoothToward(pressure, 0, 2.1, dt);
+        pressure = smoothToward(pressure, 0, 2.1, modelDt);
       }
 
       for (const region of regions) {
         const localTarget = clamp(0.5 * pressure + 0.35 * (region === activeRegion ? proximity : 0) + 0.15 * (region === activeRegion ? hoverDwell : 0));
         const rate = region === activeRegion ? 5.5 : 2.8;
-        region.local = smoothToward(region.local, localTarget, rate, dt);
+        region.local = smoothToward(region.local, localTarget, rate, modelDt);
         region.local = clamp(region.local, 0, profile.ceiling);
       }
       pressure = clamp(pressure, 0, profile.ceiling);
@@ -234,7 +241,7 @@ export function startResidualEngine(): () => void {
 
     const stillActive = pressure > 0.003 || Math.abs(scrollVelocity) > 0.003 ||
       pointerVelocity > 0.015 || proximity > 0.01 || clicks.length > 0 ||
-      regions.some(region => region.local > 0.003) || Math.abs(lastPointerX - window.innerWidth * 0.65) > 1;
+      regions.some(region => region.local > 0.003) || hoverDwell > 0.01;
     if (stillActive) {
       raf = requestAnimationFrame(tick);
     } else {
