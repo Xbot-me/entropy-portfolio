@@ -1,49 +1,54 @@
-# Design Direction — Light Under Pressure
+# Design Direction — Residual Signal
 
 ## The idea
 
-The portfolio is a composed instrument that reveals its character under pressure. At rest it should feel deliberate, editorial, and almost still. Human input briefly disturbs that order; the visual system then recovers.
+A human-made signal struggling to stay registered. English and Bangla are the readable source layer; alien mutation is a procedural underprint that slips out of alignment when the visitor pushes the page, then tries to line up again.
 
-The emotional reference is *chiaroscuro*: light against shadow, beauty against damage, calm against strain. *Clair Obscur: Expedition 33* is a reference for emotional contrast only. This site must not borrow its characters, environments, architecture, interface, symbols, or visual assets.
+At rest, the portfolio should feel deliberate, editorial, and almost still. Human input briefly disturbs that order; the visual system recovers.
+
+## Original visual metaphor
+
+Two printing plates almost align:
+
+1. The record plate carries real copy, project names, links, and evidence.
+2. The residual plate is a translucent, unstable echo of the content: mutated glyphs, broken outlines, and small registration offsets.
+
+Behavior pushes the residual plate away from alignment. Recovery draws it back. The visitor does not switch between two pages; their behavior changes the tension between two layers of the same page.
+
+## Relationship to Clair Obscur: Expedition 33
+
+The game is an emotional reference for contrast, selective light, and beauty under strain only. Do not reproduce its characters, environments, architecture, objects, motifs, typography, UI, HUD, soundtrack, or official artwork. Do not use a monolith, painter figure, expedition motif, or Belle Époque/Art Deco imitation as the site's signature.
+
+The portfolio's own vocabulary is signal interference, print registration drift, ink spread, contour traces, and procedural typography. The shared mood must not become a copied visual identity.
 
 ## Art direction
 
-- **Palette:** near-black ink, paper-warm text, aged gold as the key light, and a small amount of cool steel blue. Rust appears only as a secondary signal.
-- **Typography:** expressive editorial serif for moments of emphasis; restrained sans-serif for reading; monospaced micro-labels for technical evidence.
-- **Composition:** asymmetrical, carefully measured layouts with large type, deliberate empty space, fine rules, and a small number of authored diagrammatic objects.
-- **Material:** low-level grain, worn edges, thin line-work, and local pools of light. Avoid glossy gradients everywhere, glassmorphism, fake dashboards, neon cyberpunk, and template-card repetition.
-- **Visual signature:** a fractured vertical form crossed by one line of light. It stands for a system made legible by force, not an in-game object.
+- Near-black ink, warm paper, restrained amber, cool steel-blue, and a rare rust tone.
+- Expressive serif display type; plain, readable sans-serif body text; monospaced technical annotations.
+- Verify Bengali font support and shaping in actual browser output. Never apply Latin letter-spacing rules to Bangla.
+- Use asymmetrical composition and distinct project-specific visuals, not a uniform grid of generic cards.
+- Generate the residual layer locally with DOM/CSS/SVG at first. Add Canvas or WebGL only when a specific effect justifies it.
+- Grain and interference remain subtle at rest. Contrast and local fragments intensify only under meaningful interaction.
 
-## Interaction model
+## Interaction
 
-1. Default state is stable, readable, and visually complete without JavaScript.
-2. Pointer movement gently changes the ambient light and the illustration's position.
-3. Fast pointer movement or fast scrolling briefly raises a pressure value.
-4. Pressure intensifies a small set of details; it does not shake paragraphs or move page layout.
-5. Pressure decays back to the composed state. There is no permanent chaos.
-6. Respect reduced-motion preferences; do not add auto-playing sound, forced scroll, or hidden navigation.
+- Scroll velocity, acceleration, direction changes, pointer motion, proximity, dwell, taps, and keyboard navigation feed the pressure model.
+- A bounded pressure state controls effect intensity. A driven logistic map supplies irregularity; it does not become a license for unbounded randomness.
+- Local regions respond separately; a visitor should be able to disturb one project without destroying the whole layout.
+- The page returns to readable order after the visitor stops interacting.
+- Mobile has a lower intensity ceiling and faster decay.
+- Respect reduced motion, keyboard access, text selection, and screen readers.
+- No sound autoplay. Sound is opt-in and can be disabled immediately.
+- Do not deliberately degrade event handling or create real layout failures to simulate imperfection.
 
-## Information hierarchy
+## Content voice
 
-1. **Thesis:** engineering matters most when systems are under real load.
-2. **Production proof:** retail platform scale, role, and scope; label private client work honestly.
-3. **Inspectable work:** SentinelGuard, Repo-Brain, PulseDeploy, KhojBangla, PerfKit, and GeoProspector AI with direct public links.
-4. **Engineering principles:** observe before acting, make complexity legible, design for recovery.
-5. **Experience and contact:** concise and credible, with no inflated claims.
+- Lead with operational reality and specific decisions.
+- Use English for all critical information.
+- Use selective Bangla where it adds a real personal cadence, with English context when needed.
+- Avoid grandiose claims, fake vulnerability, generic AI slogans, anime/cosplay framing, and fake terminal output.
+- Treat numbers as evidence. Keep unverified claims out of public copy until confirmed.
 
-## Content rules
+## Definition of success
 
-- Prefer one verifiable artifact, repository, or concrete result over several broad capability claims.
-- Do not invent client names, metrics, commands, product functionality, or testimonials.
-- Preserve the distinction between public projects and confidential production work.
-- The page should communicate engineering judgment, not perform a persona of being “dangerous.”
-- English carries essential information. Bangla can appear where it adds genuine context, never as a barrier to comprehension.
-
-## Implementation rules
-
-- Astro static output; no animation framework is needed for the current interaction model.
-- Keep the initial viewport strong before any hover or scroll.
-- Keep the page responsive, keyboard navigable, and readable at 320px.
-- Avoid continuous requestAnimationFrame loops when the page is idle.
-- No visual effect may obscure project names, descriptions, links, or contact information.
-- Validate the production build after structural changes.
+The page should make a visitor think, “This feels authored,” before they think about the animation. A reader can understand the work without interacting. The chaos can be explored without getting trapped in it, and the underlying code remains deterministic enough to test.
