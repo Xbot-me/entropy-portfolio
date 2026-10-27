@@ -1,39 +1,37 @@
-# Mustafizur Rahman — Systems Under Pressure
+# Mustafizur Rahman — Residual Signal
 
-A static-first portfolio about production engineering: commerce, security, performance, and the systems that have to recover when the happy path ends.
+An experimental personal portfolio built around **Order ↔ Chaos**. The visual metaphor is two almost-aligned printing plates: readable content stays intact while a procedural echo briefly drifts under interaction, then recovers.
 
-The visual direction is **light under pressure**: editorial typography, near-black surfaces, paper-warm text, restrained gold, and cool steel-blue details. It takes emotional cues from chiaroscuro and painterly contrast, not assets or interface motifs from any specific game.
+The influence from *Clair Obscur: Expedition 33* is limited to the abstract principle of contrast and selective light. No game characters, objects, environments, typography, UI, soundtrack, or official assets are used. The portfolio's own visual language is signal interference, damaged print registration, and procedural type.
 
 ## Run locally
 
-```bash
-npm install
-npm run dev
-```
+    npm install
+    npm run dev
 
 ## Build
 
-```bash
-npm run build
-npm run preview
-```
+    npm run build
+    npm run preview
 
-Astro builds a static site into `dist/`. No client framework or animation library is required.
+Astro builds a static site into dist/. No server-side Worker is required for the core experience.
 
-## Deploy
-
-Use **Cloudflare Pages** with the following settings:
+## Deploy to Cloudflare Pages
 
 - Framework preset: Astro
-- Build command: `npm run build`
-- Build output directory: `dist`
+- Build command: npm run build
+- Build output directory: dist/
+
+Only add a Worker if a real server-side feature needs one. Pointer tracking, scroll response, audio, and session-only effects can run client-side.
 
 ## Interaction principles
 
-- The page is composed and readable at rest.
-- Fast scrolling and pointer movement briefly raise visual pressure, then decay.
-- No perpetual character jitter, sound, or forced interaction.
-- Reduced-motion preferences disable the behavior layer.
-- Public work links lead to source repositories or the WordPress.org listing; client production work is clearly marked as private.
+- Real project content and links remain readable without JavaScript.
+- Behavior raises a bounded pressure value; it does not replace the original content.
+- A driven logistic map provides visual irregularity, while pressure decides how much can be seen.
+- The visual system returns toward order when the visitor stops interacting.
+- Mobile, Save-Data, and reduced-motion profiles are constrained.
+- The accessible copy and all functional links remain canonical; the alien layer is decorative.
+- Sound is not yet implemented; no inactive sound control is shown.
 
-See [DESIGN-DIRECTION.md](./DESIGN-DIRECTION.md) before changing the visual language.
+See planning/README.md for the current planning pack and planning/ART-DIRECTION.md for the originality guardrails.
