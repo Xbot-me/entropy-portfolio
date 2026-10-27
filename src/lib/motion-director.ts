@@ -58,7 +58,8 @@ export function startMotionDirector(): () => void {
   };
   setCanvasSize();
 
-  // Lenis supplies physical-feeling wheel inertia on desktop. Touch keeps native scroll.
+  // Lenis supplies physical-feeling wheel inertia on desktop. Its GSAP ticker
+  // subscription wakes only for actual input/scroll, then sleeps after settling.
   if (!coarse) {
     lenis = new Lenis({
       autoRaf: false,
@@ -69,10 +70,46 @@ export function startMotionDirector(): () => void {
       anchors: true,
       smoothWheel: true,
     });
-    lenis.on("scroll", ScrollTrigger.update);
-    lenisTicker = (time: number) => lenis?.raf(time * 1000);
-    gsap.ticker.add(lenisTicker);
-    gsap.ticker.lagSmoothing(0);
+
+    let idleLenisFrames = 0;
+    const tickLenis = (time: number): void => {
+      lenis?.raf(time * 1000);
+      if (lenis?.isScrolling === true) {
+        idleLenisFrames = 0;
+        return;
+      }
+      idleLenisFrames++;
+      if (idleLenisFrames > 5 && lenisTicker) {
+        gsap.ticker.remove(lenisTicker);
+        lenisTicker = null;
+        gsap.ticker.lagSmoothing(500, 33);
+      }
+    };
+
+    const wakeLenis = (): void => {
+      idleLenisFrames = 0;
+      if (lenisTicker) return;
+      lenisTicker = tickLenis;
+      gsap.ticker.lagSmoothing(0);
+      gsap.ticker.add(lenisTicker);
+    };
+
+    lenis.on("scroll", () => {
+      ScrollTrigger.update();
+      wakeLenis();
+    });
+
+    const onScrollIntent = (): void => wakeLenis();
+    window.addEventListener("wheel", onScrollIntent, { passive: true });
+    window.addEventListener("touchstart", onScrollIntent, { passive: true });
+    window.addEventListener("keydown", onScrollIntent);
+    document.addEventListener("click", onScrollIntent);
+    cleanups.push(() => {
+      window.removeEventListener("wheel", onScrollIntent);
+      window.removeEventListener("touchstart", onScrollIntent);
+      window.removeEventListener("keydown", onScrollIntent);
+      document.removeEventListener("click", onScrollIntent);
+    });
   }
 
   // Draw only the characters that are actually present. The source heading remains semantic.
