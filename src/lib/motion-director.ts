@@ -242,7 +242,7 @@ export function startMotionDirector(): () => void {
     }
 
     if (content) {
-      gsap.from(content.querySelectorAll(".project__meta, h3, > p, .project__links"), {
+      gsap.from(content.querySelectorAll(".project__meta, h3, p, .project__links"), {
         y: 14,
         opacity: 0,
         stagger: 0.09,
@@ -314,7 +314,7 @@ export function startMotionDirector(): () => void {
       const toRotateX = gsap.quickTo(project, "rotationX", { duration: 0.45, ease: "power3.out" });
       const toRotateY = gsap.quickTo(project, "rotationY", { duration: 0.45, ease: "power3.out" });
       const toZ = gsap.quickTo(project, "z", { duration: 0.45, ease: "power3.out" });
-      project.style.transformPerspective = "1100px";
+      gsap.set(project, { transformPerspective: 1100 });
       const onProjectMove = (event: PointerEvent): void => {
         if (!(event.target instanceof Element) || !event.target.closest(".project__graphic")) return;
         const rect = project.getBoundingClientRect();
@@ -450,6 +450,7 @@ export function startMotionDirector(): () => void {
     disposed = true;
     for (const cleanup of cleanups.splice(0)) cleanup();
     if (lenisTicker) gsap.ticker.remove(lenisTicker);
+    gsap.ticker.lagSmoothing(500, 33);
     lenis?.destroy();
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     splits.forEach(split => split.revert());
