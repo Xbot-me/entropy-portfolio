@@ -292,7 +292,7 @@ p { max-width: 68ch; }
 .risk-map__line--c { bottom: 18%; left: 47%; width: 48%; transform: rotate(-63deg); opacity: .35; }
 .risk-map__label { position: absolute; top: -1.5rem; left: 0; color: var(--dust); font-family: var(--mono); font-size: .48rem; letter-spacing: .08em; text-transform: uppercase; }
 .project__graphic--graph { background: radial-gradient(ellipse at 50% 40%, rgba(115,141,157,.11), transparent 70%), rgba(24,27,30,.28); }
-.graph-art { width: 100%; padding: .6rem; }
+.graph-art, .signal-watch-art { width: 100%; padding: .6rem; }
 .project__graphic--terminal { background: radial-gradient(ellipse at 50% 60%, rgba(115,141,157,.08), transparent 75%), rgba(24,27,30,.4); }
 .terminal-sheet { width: 82%; max-width: 310px; padding: 1rem; border: 1px solid rgba(115,141,157,.35); background: rgba(12,14,16,.94); transform: rotate(-1.5deg); transition: transform 320ms var(--ease); }
 .project:hover .terminal-sheet { transform: rotate(0deg) translateY(-2px); }
