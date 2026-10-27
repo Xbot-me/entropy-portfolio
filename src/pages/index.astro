@@ -7,366 +7,376 @@ import "../styles/global.css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Mustafizur Rahman — systems that refuse to die at 3 a.m." />
-    <title>Mustafizur Rahman</title>
+    <meta name="theme-color" content="#0c0d0f" />
+    <meta name="description" content="Mustafizur Rahman builds and operates production systems across commerce, security, performance, and infrastructure." />
+    <title>Mustafizur Rahman — Systems Under Pressure</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div class="scroll-progress" aria-hidden="true"></div>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="atmosphere" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
 
-    <header class="entry" data-entropy="entry">
-      <p class="entry__label">Mustafizur Rahman</p>
-      <h1 class="entry__title">Systems that refuse<br />to die at 3&nbsp;a.m.</h1>
-      <p class="entry__stats">236,000 orders · One person owning the entire surface</p>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Mustafizur Rahman, top of page">
+        <span class="wordmark__seal">MR</span>
+        <span class="wordmark__name">Mustafizur Rahman <small>Systems engineer</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#work">Work <span>01</span></a>
+        <a href="#approach">Approach <span>02</span></a>
+        <a href="#path">Path <span>03</span></a>
+      </nav>
+      <a class="header-contact" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a>
     </header>
 
-    <section class="presence will-reveal" data-entropy="presence">
-      <p class="presence__lead">I build the parts most people only notice when they break.</p>
-      <p>
-        Payment flows that survive automated attacks. Catalogs that stay fast under real load.
-        Deployment pipelines that do not wake anyone up.
-      </p>
-      <p>
-        For the last six years I have been the sole technical owner of a retail platform that has
-        processed more than <strong>236,000 orders</strong> and serves <strong>134,000 customers</strong>.
-      </p>
-      <p class="presence__close">
-        The work is not glamorous.<br />It is exact.<br />It is heavy.<br />It is mine.
-      </p>
-      <p class="presence__bn" lang="bn">আমি এমন সিস্টেম বানাই যেগুলো রাত তিনটায় মারা যায় না।</p>
-    </section>
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero__layout">
+          <div class="hero__copy">
+            <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Engineering beyond the demo <span class="eyebrow__tail">Dhaka · Working globally</span></p>
+            <h1 id="hero-title">Systems don’t fail<br /><em>in the demo.</em><br /><span>They fail at <b>03:07.</b></span></h1>
+            <p class="hero__dek">I build and operate the parts that have to hold: commerce, checkout security, data, and infrastructure. The work starts where the happy path ends.</p>
+            <div class="hero__actions">
+              <a class="text-link text-link--bright" href="#work">Explore selected work <span aria-hidden="true">↘</span></a>
+              <a class="text-link" href="https://github.com/Xbot-me" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="hero__proof" aria-label="Production experience">
+              <div><strong>236,000+</strong><span>orders processed</span></div>
+              <div><strong>134,000+</strong><span>customers served</span></div>
+              <div><strong>6+ years</strong><span>in production systems</span></div>
+            </div>
+          </div>
 
-    <section class="work will-reveal" data-entropy="work">
-      <h2 class="section-label">Selected work</h2>
-
-      <article class="project" data-entropy="proj-catalog">
-        <div class="project__meta">
-          <span class="project__year">2019–present</span>
-          <span class="project__tags">Commerce · Performance</span>
+          <figure class="hero-art" aria-label="Original abstract illustration of a fractured structure held together by a beam of light">
+            <div class="hero-art__frame">
+              <svg class="hero-art__svg" viewBox="0 0 660 790" role="img" aria-labelledby="art-title art-desc">
+                <title id="art-title">A structure under pressure</title>
+                <desc id="art-desc">A dark, fractured monolith crossed by a thin warm line of light, surrounded by measured marks and drifting fragments.</desc>
+                <defs>
+                  <linearGradient id="stone-face" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#77736d" stop-opacity=".66" />
+                    <stop offset=".34" stop-color="#25272b" stop-opacity=".94" />
+                    <stop offset="1" stop-color="#101114" stop-opacity=".98" />
+                  </linearGradient>
+                  <linearGradient id="stone-edge" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#ded0b4" stop-opacity=".1" />
+                    <stop offset=".45" stop-color="#e3bd77" stop-opacity=".82" />
+                    <stop offset="1" stop-color="#e3bd77" stop-opacity=".04" />
+                  </linearGradient>
+                  <linearGradient id="light-line" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#f0d7a1" stop-opacity="0" />
+                    <stop offset=".42" stop-color="#f0d7a1" />
+                    <stop offset=".6" stop-color="#d6a75f" />
+                    <stop offset="1" stop-color="#d6a75f" stop-opacity="0" />
+                  </linearGradient>
+                  <radialGradient id="light-halo">
+                    <stop offset="0" stop-color="#d9a95f" stop-opacity=".3" />
+                    <stop offset=".5" stop-color="#a77940" stop-opacity=".08" />
+                    <stop offset="1" stop-color="#0c0d0f" stop-opacity="0" />
+                  </radialGradient>
+                  <pattern id="fine-grid" width="26" height="26" patternUnits="userSpaceOnUse">
+                    <path d="M 26 0 L 0 0 0 26" fill="none" stroke="#a5a09a" stroke-opacity=".12" stroke-width=".6" />
+                  </pattern>
+                  <filter id="soft-glow" x="-100%" y="-100%" width="300%" height="300%">
+                    <feGaussianBlur stdDeviation="15" />
+                  </filter>
+                </defs>
+                <circle cx="365" cy="330" r="300" fill="url(#light-halo)" />
+                <circle cx="365" cy="330" r="236" fill="none" stroke="#c8b18a" stroke-opacity=".18" stroke-width=".8" />
+                <circle cx="365" cy="330" r="188" fill="none" stroke="#c8b18a" stroke-opacity=".12" stroke-dasharray="2 12" stroke-width=".8" />
+                <path d="M96 110 L445 78 L535 183 L501 594 L382 696 L130 641 L71 431 Z" fill="url(#fine-grid)" opacity=".65" />
+                <path d="M174 144 L396 112 L485 226 L449 542 L348 652 L174 610 L132 407 Z" fill="url(#stone-face)" stroke="#c7b99e" stroke-opacity=".38" stroke-width="1.2" />
+                <path d="M174 144 L250 215 L218 385 L132 407 L132 407 Z" fill="#74716d" fill-opacity=".14" />
+                <path d="M250 215 L396 112 L485 226 L358 294 Z" fill="#989084" fill-opacity=".12" />
+                <path d="M250 215 L358 294 L348 652 L218 573 L218 385 Z" fill="#08090b" fill-opacity=".4" />
+                <path d="M358 294 L485 226 L449 542 L348 652 Z" fill="#d8c6a6" fill-opacity=".035" />
+                <path d="M174 144 L250 215 L218 385 L132 407" fill="none" stroke="url(#stone-edge)" stroke-width="1.4" />
+                <path d="M396 112 L358 294 L485 226" fill="none" stroke="#d8c6a6" stroke-opacity=".35" stroke-width="1" />
+                <path d="M250 215 L330 362 L218 385" fill="none" stroke="#d8c6a6" stroke-opacity=".16" stroke-width="1" />
+                <path d="M330 362 L348 652 L449 542" fill="none" stroke="#d8c6a6" stroke-opacity=".22" stroke-width="1" />
+                <path d="M358 294 L330 362 L449 542" fill="none" stroke="#d8c6a6" stroke-opacity=".13" stroke-width="1" />
+                <path d="M115 292 L256 326 L328 358 L412 396 L525 397" fill="none" stroke="#d2a965" stroke-opacity=".15" stroke-width="1" />
+                <path d="M193 80 L275 206 L319 334 L360 392 L470 472 L547 489" fill="none" stroke="#d7c2a0" stroke-opacity=".18" stroke-width="1" />
+                <path d="M365 84 L341 238 L323 336 L343 427 L333 552 L298 710" fill="none" stroke="url(#light-line)" stroke-width="2.5" />
+                <path d="M365 84 L341 238 L323 336 L343 427 L333 552 L298 710" fill="none" stroke="#e5bf79" stroke-opacity=".6" stroke-width="16" filter="url(#soft-glow)" />
+                <path class="hero-art__fracture" d="M365 84 L341 238 L323 336 L343 427 L333 552 L298 710" fill="none" stroke="#f2d9a5" stroke-width="1.2" />
+                <path d="M323 336 L268 352 L235 421 L218 573" fill="none" stroke="#aab9c4" stroke-opacity=".36" stroke-width="1" />
+                <path d="M343 427 L408 447 L430 508" fill="none" stroke="#aab9c4" stroke-opacity=".26" stroke-width="1" />
+                <path d="M92 500 L146 508 L179 536 L201 584" fill="none" stroke="#aab9c4" stroke-opacity=".2" stroke-width="1" />
+                <path d="M473 130 L520 120 L544 143" fill="none" stroke="#c9b18b" stroke-opacity=".5" stroke-width="1" />
+                <path d="M490 607 L538 624 L570 609" fill="none" stroke="#c9b18b" stroke-opacity=".4" stroke-width="1" />
+                <path d="M124 192 L99 181 L86 195" fill="none" stroke="#c9b18b" stroke-opacity=".34" stroke-width="1" />
+                <g fill="#e2bd79">
+                  <circle cx="323" cy="336" r="3.4" />
+                  <circle cx="343" cy="427" r="2.4" />
+                  <circle cx="333" cy="552" r="2" />
+                  <circle cx="201" cy="584" r="1.7" />
+                  <circle cx="520" cy="120" r="1.7" />
+                </g>
+                <g fill="#9bb0bf" fill-opacity=".5">
+                  <path d="M100 335 L111 329 L122 345 L110 350 Z" />
+                  <path d="M499 302 L510 298 L516 310 L505 315 Z" />
+                  <path d="M461 659 L471 652 L479 663 L468 670 Z" />
+                  <path d="M146 678 L154 674 L160 683 L151 689 Z" />
+                  <path d="M524 474 L533 469 L541 479 L531 484 Z" />
+                </g>
+                <path d="M62 731 H596" fill="none" stroke="#c8b18a" stroke-opacity=".3" stroke-width=".8" />
+                <path d="M62 724 V738 M596 724 V738" fill="none" stroke="#c8b18a" stroke-opacity=".45" stroke-width=".8" />
+                <text x="62" y="756" fill="#b9afa0" fill-opacity=".65" font-size="9" letter-spacing="2.3">FIG. 01 / LOAD-BEARING FORM</text>
+                <text x="596" y="756" text-anchor="end" fill="#b9afa0" fill-opacity=".65" font-size="9" letter-spacing="2.3">RECOVERY / 001</text>
+              </svg>
+              <span class="hero-art__coordinate hero-art__coordinate--top">FIELD STUDY <b>01—03</b></span>
+              <span class="hero-art__coordinate hero-art__coordinate--side">ORDER / PRESSURE / RECOVERY</span>
+              <span class="hero-art__caption">A system is a shape<br />made visible by force.</span>
+            </div>
+          </figure>
         </div>
-        <h3 class="project__title">Catalog under load</h3>
-        <p class="project__desc">
-          A product surface that stays responsive when traffic spikes. Caching layers, query discipline,
-          and failure modes that degrade instead of collapse.
-        </p>
-      </article>
+        <a class="scroll-cue" href="#work"><span class="scroll-cue__line"></span><span>Scroll to inspect</span><span class="scroll-cue__index">01 / 04</span></a>
+      </section>
 
-      <article class="project" data-entropy="proj-payments">
-        <div class="project__meta">
-          <span class="project__year">2020–present</span>
-          <span class="project__tags">Payments · Security</span>
+      <section class="work-section section-shell" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <p class="eyebrow">01 / Field evidence</p>
+          <div>
+            <h2 id="work-title">Built in the <em>real world.</em></h2>
+            <p class="section-heading__intro">Not concept shots. Systems with users, failure modes, source code, and consequences.</p>
+          </div>
         </div>
-        <h3 class="project__title">Payment flows that hold</h3>
-        <p class="project__desc">
-          Checkout that survives automated attacks and flaky gateways. Idempotency, retry discipline,
-          and monitoring that pages the right person — rarely me at 3 a.m.
-        </p>
-      </article>
 
-      <article class="project" data-entropy="proj-ops">
-        <div class="project__meta">
-          <span class="project__year">2021–present</span>
-          <span class="project__tags">Ops · Deploy</span>
+        <article class="production-case">
+          <div class="production-case__visual" aria-hidden="true">
+            <div class="case-orbit case-orbit--one"></div>
+            <div class="case-orbit case-orbit--two"></div>
+            <div class="case-core"><span>PROD</span><b>LIVE</b></div>
+            <span class="case-node case-node--one"></span>
+            <span class="case-node case-node--two"></span>
+            <span class="case-node case-node--three"></span>
+            <span class="case-scan case-scan--one"></span>
+            <span class="case-scan case-scan--two"></span>
+            <span class="case-label case-label--one">CHECKOUT / 01</span>
+            <span class="case-label case-label--two">DATA / 02</span>
+            <span class="case-label case-label--three">EDGE / 03</span>
+            <span class="case-vertical">PRODUCTION SYSTEM / PRIVATE CLIENT WORK</span>
+          </div>
+          <div class="production-case__copy">
+            <p class="eyebrow">Long-running production system <span class="eyebrow__separator">·</span> 2020—2026</p>
+            <h3>A retail platform with no room for guesswork.</h3>
+            <p>I was the sole technical owner across the stack: commerce workflows, payment integrations, performance, fraud pressure, databases, deployment, and production operations. The work is private; the scale is measurable.</p>
+            <div class="metric-row">
+              <div><strong>236k<span>+</span></strong><small>orders processed</small></div>
+              <div><strong>134k<span>+</span></strong><small>customers served</small></div>
+              <div><strong>9</strong><small>services operated</small></div>
+            </div>
+            <p class="case-footnote">KC Investment LLC / Kpop USA <span>·</span> Details limited where client confidentiality applies.</p>
+          </div>
+        </article>
+
+        <div class="project-heading">
+          <p class="eyebrow">Open work <span class="eyebrow__separator">·</span> Source you can inspect</p>
+          <p class="project-heading__note">Selected tools, not a dump of every repository.</p>
         </div>
-        <h3 class="project__title">Deployments that sleep</h3>
-        <p class="project__desc">
-          Pipelines and runbooks that absorb change without drama. Rollbacks that are boring.
-          Observability that is honest.
-        </p>
-      </article>
-    </section>
 
-    <section class="systems will-reveal" data-entropy="systems">
-      <h2 class="section-label">How I work</h2>
-      <p>
-        I prefer systems that are a little imperfect and very hard to kill over systems that are
-        polished and fragile. Chaos is not the goal — recovery is.
-      </p>
-      <p>
-        English for precision. Bangla for weight. And when the surface starts to slip, something else
-        briefly shows through.
-      </p>
-    </section>
+        <div class="project-grid">
+          <article class="work-card work-card--sentinel">
+            <div class="work-card__visual" aria-hidden="true">
+              <div class="sentinel-rings"><i></i><i></i><i></i><span class="sentinel-rings__core"></span><b class="sentinel-rings__cross">+</b></div>
+              <span class="visual-tag visual-tag--top">THREAT SURFACE / 01</span>
+              <span class="visual-tag visual-tag--bottom">OBSERVE → DECIDE → ACT</span>
+              <span class="visual-serial">SG—0.4</span>
+            </div>
+            <div class="work-card__copy">
+              <p class="project-meta"><span>01</span><span>WordPress / WooCommerce</span><span>2026</span></p>
+              <h3>SentinelGuard</h3>
+              <p>An application-level defense layer for card-testing bots, fake orders, and checkout-script tampering. Published on WordPress.org, built around observability before enforcement.</p>
+              <div class="tag-row"><span>PHP</span><span>WooCommerce</span><span>Security</span></div>
+              <div class="work-card__links">
+                <a href="https://wordpress.org/plugins/sentinelguard-ecommerce-protection/" target="_blank" rel="noreferrer">WordPress.org <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/Xbot-me/sentinelwp-security" target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
 
-    <section class="history will-reveal" data-entropy="history">
-      <h2 class="section-label">Path</h2>
-      <p>
-        Six years building and owning the full stack of a retail operation — from the database to the
-        edge, from the first order to the two-hundred-thousandth. The numbers are not the point.
-        The point is that the system is still standing.
-      </p>
-    </section>
+          <article class="work-card work-card--brain">
+            <div class="work-card__visual" aria-hidden="true">
+              <svg class="brain-graph" viewBox="0 0 520 300">
+                <g class="brain-graph__lines" fill="none" stroke="#9eafbb" stroke-opacity=".48" stroke-width="1">
+                  <path d="M80 77 L169 124 L260 65 L349 115 L437 58" />
+                  <path d="M80 77 L106 203 L220 222 L349 115 L390 225 L437 58" />
+                  <path d="M169 124 L220 222 L260 65 L390 225" />
+                  <path d="M106 203 L169 124 L349 115 L437 250" />
+                  <path d="M220 222 L437 250 L390 225" />
+                </g>
+                <g fill="#141b20" stroke="#d7ba80" stroke-width="1.5">
+                  <circle cx="80" cy="77" r="8" /><circle cx="169" cy="124" r="6" /><circle cx="260" cy="65" r="9" />
+                  <circle cx="349" cy="115" r="8" /><circle cx="437" cy="58" r="5" /><circle cx="106" cy="203" r="6" />
+                  <circle cx="220" cy="222" r="9" /><circle cx="390" cy="225" r="6" /><circle cx="437" cy="250" r="5" />
+                </g>
+                <circle cx="260" cy="65" r="22" fill="none" stroke="#d7ba80" stroke-opacity=".3" />
+                <circle cx="220" cy="222" r="22" fill="none" stroke="#8aa1b5" stroke-opacity=".24" />
+              </svg>
+              <span class="visual-tag visual-tag--top">CODEBASE / MAP</span>
+              <span class="visual-tag visual-tag--bottom">SYMBOLS → RELATIONSHIPS</span>
+              <span class="visual-serial">RB—01</span>
+            </div>
+            <div class="work-card__copy">
+              <p class="project-meta"><span>02</span><span>Developer tooling</span><span>2025</span></p>
+              <h3>Repo-Brain</h3>
+              <p>Codebase intelligence that looks beyond filenames: syntax structure, symbols, and dependency relationships make a repository easier to reason about.</p>
+              <div class="tag-row"><span>AST</span><span>Code intelligence</span><span>Graphs</span></div>
+              <div class="work-card__links">
+                <a href="https://github.com/Xbot-me/repo-brain" target="_blank" rel="noreferrer">Inspect repository <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
 
-    <footer class="contact will-reveal" data-entropy="contact" data-journey="calm">
-      <h2>Got a hard problem?</h2>
-      <p class="contact__sub">Good.</p>
-      <p class="contact__body">
-        I'm most useful when it's supposed to be impossible. Bring me the thing your last three
-        devs gave up on.
-      </p>
-      <p class="contact__actions">
-        <a class="contact__link" href="mailto:hello@mustafizur.info">hello@mustafizur.info</a>
-      </p>
-      <button type="button" class="sound-toggle" aria-pressed="false" title="Toggle ambient sound">
-        Sound off
-      </button>
+          <article class="work-card work-card--deploy">
+            <div class="work-card__visual" aria-hidden="true">
+              <div class="terminal-plate">
+                <div class="terminal-plate__bar"><i></i><i></i><i></i><span>deploy / production</span></div>
+                <p><span>$</span> release / production</p>
+                <p class="terminal-muted">checking service health ...</p>
+                <p class="terminal-success"><b>✓</b> snapshot recorded</p>
+                <p class="terminal-success"><b>✓</b> release complete</p>
+                <div class="terminal-plate__rule"></div>
+                <small>ROLLBACK READY / STATUS 0</small>
+              </div>
+              <span class="visual-tag visual-tag--top">DEPLOYMENT TOOLKIT</span>
+              <span class="visual-serial">PD—04</span>
+            </div>
+            <div class="work-card__copy">
+              <p class="project-meta"><span>03</span><span>Infrastructure / Bash</span><span>2024</span></p>
+              <h3>PulseDeploy</h3>
+              <p>A Bash toolkit for repeatable deployments across VPS and EC2 environments. Built for operators who need the release process to be legible and recoverable.</p>
+              <div class="tag-row"><span>Bash</span><span>Linux</span><span>Deployment</span></div>
+              <div class="work-card__links">
+                <a href="https://github.com/Xbot-me/PulseDeploy" target="_blank" rel="noreferrer">Inspect repository <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card work-card--bangla">
+            <div class="work-card__visual" aria-hidden="true">
+              <div class="paper-stack">
+                <span class="paper-stack__overline">সংবাদ / INDEX 04</span>
+                <strong lang="bn">খবরের ভেতর<br />অর্থ খোঁজা</strong>
+                <span class="paper-stack__line paper-stack__line--long"></span>
+                <span class="paper-stack__line"></span>
+                <span class="paper-stack__line paper-stack__line--short"></span>
+                <span class="paper-stack__line paper-stack__line--long"></span>
+                <span class="paper-stack__stamp">OCR<br />+ AI</span>
+              </div>
+              <span class="visual-tag visual-tag--top">LANGUAGE / SEARCH</span>
+              <span class="visual-serial">KB—02</span>
+            </div>
+            <div class="work-card__copy">
+              <p class="project-meta"><span>04</span><span>Language technology</span><span>2024</span></p>
+              <h3>KhojBangla</h3>
+              <p>Bangla newspaper OCR with AI-assisted text correction and search. A practical attempt to make noisy scanned text usable, not merely readable.</p>
+              <div class="tag-row"><span>OCR</span><span>Bangla</span><span>Search</span></div>
+              <div class="work-card__links">
+                <a href="https://github.com/Xbot-me/KhojBangla" target="_blank" rel="noreferrer">Inspect repository <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="other-work">
+          <p class="eyebrow">Also in the workshop</p>
+          <a href="https://github.com/Xbot-me/PerfKit" target="_blank" rel="noreferrer"><span><b>PerfKit</b><small>Performance audits / Lighthouse + AI-assisted prioritization</small></span><span class="other-work__arrow">↗</span></a>
+          <a href="https://github.com/Xbot-me/GeoProspector-AI" target="_blank" rel="noreferrer"><span><b>GeoProspector AI</b><small>LangGraph / B2B lead-generation workflow</small></span><span class="other-work__arrow">↗</span></a>
+        </div>
+      </section>
+
+      <section class="approach-section section-shell" id="approach" aria-labelledby="approach-title">
+        <div class="section-heading">
+          <p class="eyebrow">02 / Working principles</p>
+          <div>
+            <h2 id="approach-title">Beauty is not the opposite of <em>reliability.</em></h2>
+            <p class="section-heading__intro">The best systems are not the ones that look flawless. They are the ones that tell the truth when they are under strain.</p>
+          </div>
+        </div>
+        <div class="principles">
+          <article class="principle">
+            <span class="principle__index">A / 01</span>
+            <div class="principle__mark principle__mark--signal" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>Observe before acting.</h3>
+            <p>Understand the normal shape of a system before introducing rules that can hurt real users.</p>
+          </article>
+          <article class="principle">
+            <span class="principle__index">A / 02</span>
+            <div class="principle__mark principle__mark--structure" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <h3>Make complexity legible.</h3>
+            <p>Trace the relationships, expose the failure modes, and give the next person a way to reason about the whole.</p>
+          </article>
+          <article class="principle">
+            <span class="principle__index">A / 03</span>
+            <div class="principle__mark principle__mark--recovery" aria-hidden="true"><i></i><i></i><i></i></div>
+            <h3>Design for recovery.</h3>
+            <p>Retries, rollbacks, idempotency, and honest observability are not extras. They are part of the feature.</p>
+          </article>
+        </div>
+        <div class="stack-ledger">
+          <div><p class="eyebrow">Tools are the medium</p><p class="stack-ledger__lead">Choose the tool that fits the failure mode.</p></div>
+          <div class="stack-ledger__items">
+            <p><span>01</span> PHP · WordPress · WooCommerce · HPOS</p>
+            <p><span>02</span> Python · FastAPI · AI workflows</p>
+            <p><span>03</span> MySQL · PostgreSQL · Redis</p>
+            <p><span>04</span> Linux · Docker · Bash · CI/CD</p>
+            <p><span>05</span> TypeScript · React · Next.js</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="path-section section-shell" id="path" aria-labelledby="path-title">
+        <div class="section-heading">
+          <p class="eyebrow">03 / Path so far</p>
+          <div>
+            <h2 id="path-title">Close to the <em>consequences.</em></h2>
+            <p class="section-heading__intro">A generalist by practice, with most of the mileage earned where software meets real operations.</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-item__period">2019 — NOW</span>
+            <div><h3>Independent consultant</h3><p>200+ client projects across full-stack development, CMS and commerce, API integrations, debugging, and production support.</p></div>
+            <span class="timeline-item__note">Consulting / delivery</span>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-item__period">2020 — 2026</span>
+            <div><h3>E-Commerce &amp; Systems Developer <span>KC Investment LLC / Kpop USA</span></h3><p>Sole technical owner for a high-volume retail platform: application architecture, payments, security, data, deployment, and reliability work across the stack.</p></div>
+            <span class="timeline-item__note">Production / ownership</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact-section section-shell" id="contact" aria-labelledby="contact-title">
+        <div class="contact-orbit" aria-hidden="true"><span></span><i></i><b></b></div>
+        <p class="eyebrow">04 / Open channel</p>
+        <h2 id="contact-title">Bring me the part<br />that <em>keeps breaking.</em></h2>
+        <div class="contact-section__bottom">
+          <p>I’m interested in difficult, consequential problems—especially the ones that need someone to understand the whole system, not just one ticket.</p>
+          <div class="contact-actions">
+            <a class="contact-email" href="mailto:hello@mustafizur.info">hello@mustafizur.info <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="https://github.com/Xbot-me" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark wordmark--footer" href="#top"><span class="wordmark__seal">MR</span><span class="wordmark__name">Mustafizur Rahman <small>Systems engineer</small></span></a>
+      <p>Built with intent. Made to recover.</p>
+      <a href="#top" class="back-to-top">Back to the light ↑</a>
+      <span class="site-footer__year">© 2026</span>
     </footer>
 
     <script>
-      import { startInputCollector } from "../lib/input-collector";
-      import { startVisualController } from "../lib/visual-controller";
-      import { startProjectCards } from "../lib/project-cards";
-      import { startSmoothScroll } from "../lib/smooth-scroll";
-      import { startSessionMemory, startContactReflection } from "../lib/session-memory";
-      import { startInteractions } from "../lib/interactions";
-      import { initSound, toggleMute } from "../lib/sound";
-
-      function boot() {
-        startInputCollector();
-        startVisualController();
-        startProjectCards();
-        startSmoothScroll();
-        startSessionMemory();
-        startContactReflection();
-        startInteractions();
-
-        const soundBtn = document.querySelector(".sound-toggle");
-        if (soundBtn) {
-          soundBtn.addEventListener("click", async () => {
-            const state = await toggleMute();
-            soundBtn.textContent = state.muted ? "Sound off" : "Sound on";
-            soundBtn.setAttribute("aria-pressed", state.muted ? "false" : "true");
-            if (!state.muted) initSound();
-          });
-        }
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", boot);
-      } else {
-        boot();
-      }
+      import { startPressureEngine } from "../lib/pressure-engine";
+      startPressureEngine();
     </script>
-
-    <style is:global>
-      .entry {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: var(--space-lg) var(--space-md);
-        max-width: 56rem;
-      }
-      .entry__label {
-        font-size: 0.85rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--text-muted);
-        margin-bottom: var(--space-sm);
-      }
-      .entry__title {
-        font-size: clamp(2.4rem, 6vw, 4.2rem);
-        font-weight: 500;
-        line-height: 1.1;
-        margin-bottom: var(--space-md);
-      }
-      .entry__stats {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-      }
-
-      .presence,
-      .work,
-      .systems,
-      .history,
-      .contact {
-        padding: var(--space-xl) var(--space-md);
-        max-width: 42rem;
-        border-top: 1px solid var(--border-subtle);
-      }
-
-      .section-label {
-        font-size: 0.8rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--text-muted);
-        margin-bottom: var(--space-md);
-      }
-
-      .presence__lead {
-        font-size: 1.5rem;
-        font-weight: 500;
-        margin-bottom: var(--space-md);
-      }
-      .presence p {
-        color: var(--text-secondary);
-        margin-bottom: 1.25rem;
-      }
-      .presence strong {
-        color: var(--text-primary);
-        font-weight: 500;
-      }
-      .presence__close {
-        color: var(--text-primary) !important;
-        font-weight: 500;
-      }
-      .presence__bn {
-        color: var(--accent);
-        opacity: 0.85;
-        margin-top: var(--space-md);
-      }
-
-      .project {
-        padding: var(--space-md) 0;
-        border-bottom: 1px solid var(--border-subtle);
-        transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
-      }
-      .project:last-child {
-        border-bottom: none;
-      }
-      .project__meta {
-        display: flex;
-        gap: 1rem;
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        margin-bottom: 0.5rem;
-      }
-      .project__title {
-        font-size: 1.25rem;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
-      }
-      .project__desc {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-      }
-
-      .systems p,
-      .history p {
-        color: var(--text-secondary);
-        margin-bottom: 1rem;
-      }
-
-      .contact h2 {
-        font-size: 2rem;
-        margin-bottom: 0.35rem;
-      }
-      .contact__sub {
-        color: var(--accent);
-        font-size: 1.25rem;
-        margin-bottom: 1.25rem;
-      }
-      .contact__body {
-        color: var(--text-secondary);
-        margin-bottom: 1.5rem;
-      }
-      .contact__link {
-        color: var(--text-primary);
-        border-bottom: 1px solid var(--accent);
-        transition: color 0.2s ease;
-      }
-      .contact__link:hover {
-        color: var(--accent-bright);
-      }
-
-      .sound-toggle {
-        margin-top: 2rem;
-        background: transparent;
-        border: 1px solid var(--border-subtle);
-        color: var(--text-muted);
-        font: inherit;
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-        cursor: pointer;
-        border-radius: 2px;
-      }
-      .sound-toggle:hover {
-        border-color: var(--accent-dim);
-        color: var(--text-secondary);
-      }
-
-      /* Reveal on scroll */
-      .will-reveal {
-        opacity: 0;
-        transform: translateY(1.25rem);
-        transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
-      }
-      .will-reveal.is-revealed {
-        opacity: 1;
-        transform: none;
-      }
-
-      /* Cursor + progress (from interactions) */
-      .entropy-cursor {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 12px;
-        height: 12px;
-        margin: -6px 0 0 -6px;
-        border-radius: 50%;
-        border: 1px solid var(--accent);
-        pointer-events: none;
-        z-index: 10000;
-        opacity: 0;
-        transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease, opacity 0.2s ease;
-        mix-blend-mode: difference;
-      }
-      .entropy-cursor.is-visible {
-        opacity: 0.7;
-      }
-      .entropy-cursor.is-active {
-        width: 28px;
-        height: 28px;
-        margin: -14px 0 0 -14px;
-      }
-      .scroll-progress {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 2px;
-        width: 0;
-        background: var(--accent);
-        z-index: 10001;
-        pointer-events: none;
-        opacity: 0.4;
-      }
-      .entropy-pulse {
-        position: fixed;
-        width: 8px;
-        height: 8px;
-        margin: -4px 0 0 -4px;
-        border-radius: 50%;
-        border: 1px solid var(--accent);
-        pointer-events: none;
-        z-index: 9998;
-        animation: pulse-out 0.6s var(--ease-out) forwards;
-        transform: scale(var(--pulse-scale, 1));
-      }
-      @keyframes pulse-out {
-        to {
-          opacity: 0;
-          transform: scale(calc(var(--pulse-scale, 1) * 4));
-        }
-      }
-
-      @media (max-width: 768px) {
-        .entry,
-        .presence,
-        .work,
-        .systems,
-        .history,
-        .contact {
-          padding-left: 1.25rem;
-          padding-right: 1.25rem;
-        }
-        .entropy-cursor {
-          display: none;
-        }
-      }
-    </style>
   </body>
 </html>

@@ -1,48 +1,34 @@
-/* ============================================================
-   ENTROPY PORTFOLIO — Design Tokens
-   Original visual language. High contrast. Light vs decay.
-   ============================================================ */
-
+/* Color, type, and motion tokens for the light-under-pressure concept. */
 :root {
-  /* Base */
-  --bg-deep: #0a0a0b;
-  --bg-charcoal: #121214;
-  --bg-elevated: #1a1a1e;
+  color-scheme: dark;
 
-  /* Text */
-  --text-primary: #e8e4dc;
-  --text-secondary: #a39e94;
-  --text-muted: #6b6760;
+  --ink: #0c0d0f;
+  --ink-soft: #121416;
+  --ink-raised: #1a1c1f;
+  --paper: #ece5d8;
+  --paper-dim: #d8d0c3;
+  --muted-light: #b0a99d;
+  --muted: #8d887f;
+  --quiet: #66645f;
 
-  /* Accent — light that can fracture */
-  --accent: #c9a227;
-  --accent-dim: #8a7018;
-  --accent-bright: #e8c547;
+  --gold: #d3b077;
+  --gold-light: #eed6a7;
+  --rust: #875747;
+  --rust-light: #bd8068;
+  --blue: #7f9aab;
+  --blue-deep: #435b6b;
 
-  /* Chaos undertones */
-  --chaos-cool: #3a4a5c;
-  --chaos-warm: #4a3a2a;
+  --line: rgba(236, 229, 216, 0.12);
+  --line-strong: rgba(236, 229, 216, 0.22);
 
-  /* Semantic */
-  --border-subtle: rgba(232, 228, 220, 0.08);
-  --noise-opacity: 0.035;
+  --font-sans: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-mono: "DM Mono", "SFMono-Regular", Consolas, monospace;
 
-  /* Entropy-driven (updated by JS) */
-  --entropy: 0;
-  --entropy-local: 0;
-
-  /* Typography */
-  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --font-display: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-
-  /* Spacing */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 2rem;
-  --space-lg: 4rem;
-  --space-xl: 8rem;
-
-  /* Motion */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --pointer-x: 68vw;
+  --pointer-y: 20vh;
+  --drift-x: 0px;
+  --drift-y: 0px;
+  --pressure: 0;
+  --pressure-opacity: 0.35;
 }
