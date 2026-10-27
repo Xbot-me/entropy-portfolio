@@ -1,0 +1,48 @@
+/* ============================================================
+   ENTROPY PORTFOLIO — Design Tokens
+   Original visual language. High contrast. Light vs decay.
+   ============================================================ */
+
+:root {
+  /* Base */
+  --bg-deep: #0a0a0b;
+  --bg-charcoal: #121214;
+  --bg-elevated: #1a1a1e;
+
+  /* Text */
+  --text-primary: #e8e4dc;
+  --text-secondary: #a39e94;
+  --text-muted: #6b6760;
+
+  /* Accent — light that can fracture */
+  --accent: #c9a227;
+  --accent-dim: #8a7018;
+  --accent-bright: #e8c547;
+
+  /* Chaos undertones */
+  --chaos-cool: #3a4a5c;
+  --chaos-warm: #4a3a2a;
+
+  /* Semantic */
+  --border-subtle: rgba(232, 228, 220, 0.08);
+  --noise-opacity: 0.035;
+
+  /* Entropy-driven (updated by JS) */
+  --entropy: 0;
+  --entropy-local: 0;
+
+  /* Typography */
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-display: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
