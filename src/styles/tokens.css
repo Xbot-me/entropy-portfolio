@@ -1,34 +1,25 @@
-/* Color, type, and motion tokens for the light-under-pressure concept. */
+/* Residual Signal — almost aligned, never perfectly still. */
 :root {
   color-scheme: dark;
-
-  --ink: #0c0d0f;
-  --ink-soft: #121416;
-  --ink-raised: #1a1c1f;
-  --paper: #ece5d8;
-  --paper-dim: #d8d0c3;
-  --muted-light: #b0a99d;
-  --muted: #8d887f;
-  --quiet: #66645f;
-
-  --gold: #d3b077;
-  --gold-light: #eed6a7;
-  --rust: #875747;
-  --rust-light: #bd8068;
-  --blue: #7f9aab;
-  --blue-deep: #435b6b;
-
-  --line: rgba(236, 229, 216, 0.12);
-  --line-strong: rgba(236, 229, 216, 0.22);
-
-  --font-sans: "DM Sans", "Segoe UI", system-ui, sans-serif;
-  --font-serif: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --font-mono: "DM Mono", "SFMono-Regular", Consolas, monospace;
-
-  --pointer-x: 68vw;
-  --pointer-y: 20vh;
-  --drift-x: 0px;
-  --drift-y: 0px;
+  --ink: #111315;
+  --ink-2: #181b1e;
+  --ink-3: #202326;
+  --paper: #e9e2d6;
+  --ash: #a6a196;
+  --dust: #6f706c;
+  --amber: #d1a15b;
+  --amber-pale: #ead0a3;
+  --blue: #738d9d;
+  --rust: #8a5a49;
+  --line: rgba(233, 226, 214, 0.14);
+  --line-strong: rgba(233, 226, 214, 0.28);
+  --sans: "Instrument Sans", "Noto Sans Bengali", system-ui, sans-serif;
+  --serif: "Newsreader", "Noto Sans Bengali", Georgia, serif;
+  --mono: "DM Mono", monospace;
+  --ease: cubic-bezier(.2,.75,.25,1);
   --pressure: 0;
-  --pressure-opacity: 0.35;
+  --pointer-x: 65vw;
+  --pointer-y: 20vh;
+  --echo-x: 0px;
+  --echo-y: 0px;
 }
