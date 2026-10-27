@@ -1,0 +1,372 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Mustafizur Rahman — systems that refuse to die at 3 a.m." />
+    <title>Mustafizur Rahman</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <header class="entry" data-entropy="entry">
+      <p class="entry__label">Mustafizur Rahman</p>
+      <h1 class="entry__title">Systems that refuse<br />to die at 3&nbsp;a.m.</h1>
+      <p class="entry__stats">236,000 orders · One person owning the entire surface</p>
+    </header>
+
+    <section class="presence will-reveal" data-entropy="presence">
+      <p class="presence__lead">I build the parts most people only notice when they break.</p>
+      <p>
+        Payment flows that survive automated attacks. Catalogs that stay fast under real load.
+        Deployment pipelines that do not wake anyone up.
+      </p>
+      <p>
+        For the last six years I have been the sole technical owner of a retail platform that has
+        processed more than <strong>236,000 orders</strong> and serves <strong>134,000 customers</strong>.
+      </p>
+      <p class="presence__close">
+        The work is not glamorous.<br />It is exact.<br />It is heavy.<br />It is mine.
+      </p>
+      <p class="presence__bn" lang="bn">আমি এমন সিস্টেম বানাই যেগুলো রাত তিনটায় মারা যায় না।</p>
+    </section>
+
+    <section class="work will-reveal" data-entropy="work">
+      <h2 class="section-label">Selected work</h2>
+
+      <article class="project" data-entropy="proj-catalog">
+        <div class="project__meta">
+          <span class="project__year">2019–present</span>
+          <span class="project__tags">Commerce · Performance</span>
+        </div>
+        <h3 class="project__title">Catalog under load</h3>
+        <p class="project__desc">
+          A product surface that stays responsive when traffic spikes. Caching layers, query discipline,
+          and failure modes that degrade instead of collapse.
+        </p>
+      </article>
+
+      <article class="project" data-entropy="proj-payments">
+        <div class="project__meta">
+          <span class="project__year">2020–present</span>
+          <span class="project__tags">Payments · Security</span>
+        </div>
+        <h3 class="project__title">Payment flows that hold</h3>
+        <p class="project__desc">
+          Checkout that survives automated attacks and flaky gateways. Idempotency, retry discipline,
+          and monitoring that pages the right person — rarely me at 3 a.m.
+        </p>
+      </article>
+
+      <article class="project" data-entropy="proj-ops">
+        <div class="project__meta">
+          <span class="project__year">2021–present</span>
+          <span class="project__tags">Ops · Deploy</span>
+        </div>
+        <h3 class="project__title">Deployments that sleep</h3>
+        <p class="project__desc">
+          Pipelines and runbooks that absorb change without drama. Rollbacks that are boring.
+          Observability that is honest.
+        </p>
+      </article>
+    </section>
+
+    <section class="systems will-reveal" data-entropy="systems">
+      <h2 class="section-label">How I work</h2>
+      <p>
+        I prefer systems that are a little imperfect and very hard to kill over systems that are
+        polished and fragile. Chaos is not the goal — recovery is.
+      </p>
+      <p>
+        English for precision. Bangla for weight. And when the surface starts to slip, something else
+        briefly shows through.
+      </p>
+    </section>
+
+    <section class="history will-reveal" data-entropy="history">
+      <h2 class="section-label">Path</h2>
+      <p>
+        Six years building and owning the full stack of a retail operation — from the database to the
+        edge, from the first order to the two-hundred-thousandth. The numbers are not the point.
+        The point is that the system is still standing.
+      </p>
+    </section>
+
+    <footer class="contact will-reveal" data-entropy="contact" data-journey="calm">
+      <h2>Got a hard problem?</h2>
+      <p class="contact__sub">Good.</p>
+      <p class="contact__body">
+        I'm most useful when it's supposed to be impossible. Bring me the thing your last three
+        devs gave up on.
+      </p>
+      <p class="contact__actions">
+        <a class="contact__link" href="mailto:hello@mustafizur.info">hello@mustafizur.info</a>
+      </p>
+      <button type="button" class="sound-toggle" aria-pressed="false" title="Toggle ambient sound">
+        Sound off
+      </button>
+    </footer>
+
+    <script>
+      import { startInputCollector } from "../lib/input-collector";
+      import { startVisualController } from "../lib/visual-controller";
+      import { startProjectCards } from "../lib/project-cards";
+      import { startSmoothScroll } from "../lib/smooth-scroll";
+      import { startSessionMemory, startContactReflection } from "../lib/session-memory";
+      import { startInteractions } from "../lib/interactions";
+      import { initSound, toggleMute } from "../lib/sound";
+
+      function boot() {
+        startInputCollector();
+        startVisualController();
+        startProjectCards();
+        startSmoothScroll();
+        startSessionMemory();
+        startContactReflection();
+        startInteractions();
+
+        const soundBtn = document.querySelector(".sound-toggle");
+        if (soundBtn) {
+          soundBtn.addEventListener("click", async () => {
+            const state = await toggleMute();
+            soundBtn.textContent = state.muted ? "Sound off" : "Sound on";
+            soundBtn.setAttribute("aria-pressed", state.muted ? "false" : "true");
+            if (!state.muted) initSound();
+          });
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot);
+      } else {
+        boot();
+      }
+    </script>
+
+    <style is:global>
+      .entry {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: var(--space-lg) var(--space-md);
+        max-width: 56rem;
+      }
+      .entry__label {
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: var(--space-sm);
+      }
+      .entry__title {
+        font-size: clamp(2.4rem, 6vw, 4.2rem);
+        font-weight: 500;
+        line-height: 1.1;
+        margin-bottom: var(--space-md);
+      }
+      .entry__stats {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      .presence,
+      .work,
+      .systems,
+      .history,
+      .contact {
+        padding: var(--space-xl) var(--space-md);
+        max-width: 42rem;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .section-label {
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: var(--space-md);
+      }
+
+      .presence__lead {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: var(--space-md);
+      }
+      .presence p {
+        color: var(--text-secondary);
+        margin-bottom: 1.25rem;
+      }
+      .presence strong {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+      .presence__close {
+        color: var(--text-primary) !important;
+        font-weight: 500;
+      }
+      .presence__bn {
+        color: var(--accent);
+        opacity: 0.85;
+        margin-top: var(--space-md);
+      }
+
+      .project {
+        padding: var(--space-md) 0;
+        border-bottom: 1px solid var(--border-subtle);
+        transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+      }
+      .project:last-child {
+        border-bottom: none;
+      }
+      .project__meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+      .project__title {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+      .project__desc {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      .systems p,
+      .history p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+      }
+
+      .contact h2 {
+        font-size: 2rem;
+        margin-bottom: 0.35rem;
+      }
+      .contact__sub {
+        color: var(--accent);
+        font-size: 1.25rem;
+        margin-bottom: 1.25rem;
+      }
+      .contact__body {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+      }
+      .contact__link {
+        color: var(--text-primary);
+        border-bottom: 1px solid var(--accent);
+        transition: color 0.2s ease;
+      }
+      .contact__link:hover {
+        color: var(--accent-bright);
+      }
+
+      .sound-toggle {
+        margin-top: 2rem;
+        background: transparent;
+        border: 1px solid var(--border-subtle);
+        color: var(--text-muted);
+        font: inherit;
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        cursor: pointer;
+        border-radius: 2px;
+      }
+      .sound-toggle:hover {
+        border-color: var(--accent-dim);
+        color: var(--text-secondary);
+      }
+
+      /* Reveal on scroll */
+      .will-reveal {
+        opacity: 0;
+        transform: translateY(1.25rem);
+        transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+      }
+      .will-reveal.is-revealed {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Cursor + progress (from interactions) */
+      .entropy-cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 12px;
+        height: 12px;
+        margin: -6px 0 0 -6px;
+        border-radius: 50%;
+        border: 1px solid var(--accent);
+        pointer-events: none;
+        z-index: 10000;
+        opacity: 0;
+        transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease, opacity 0.2s ease;
+        mix-blend-mode: difference;
+      }
+      .entropy-cursor.is-visible {
+        opacity: 0.7;
+      }
+      .entropy-cursor.is-active {
+        width: 28px;
+        height: 28px;
+        margin: -14px 0 0 -14px;
+      }
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 2px;
+        width: 0;
+        background: var(--accent);
+        z-index: 10001;
+        pointer-events: none;
+        opacity: 0.4;
+      }
+      .entropy-pulse {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        margin: -4px 0 0 -4px;
+        border-radius: 50%;
+        border: 1px solid var(--accent);
+        pointer-events: none;
+        z-index: 9998;
+        animation: pulse-out 0.6s var(--ease-out) forwards;
+        transform: scale(var(--pulse-scale, 1));
+      }
+      @keyframes pulse-out {
+        to {
+          opacity: 0;
+          transform: scale(calc(var(--pulse-scale, 1) * 4));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .entry,
+        .presence,
+        .work,
+        .systems,
+        .history,
+        .contact {
+          padding-left: 1.25rem;
+          padding-right: 1.25rem;
+        }
+        .entropy-cursor {
+          display: none;
+        }
+      }
+    </style>
+  </body>
+</html>
