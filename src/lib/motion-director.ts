@@ -172,6 +172,15 @@ export function startMotionDirector(): () => void {
   }
 
   // Content transitions have different timing, rather than all sections behaving like one template.
+  const progressFill = document.querySelector<HTMLElement>(".scroll-progress span");
+  if (progressFill) {
+    gsap.to(progressFill, {
+      scaleX: 1,
+      ease: "none",
+      scrollTrigger: { trigger: document.documentElement, start: "top top", end: "bottom bottom", scrub: 0.25 },
+    });
+  }
+
   const sideNotes = gsap.utils.toArray<HTMLElement>(".section-side");
   sideNotes.forEach((element) => {
     gsap.fromTo(element, { x: -22, opacity: 0 }, {
@@ -324,11 +333,31 @@ export function startMotionDirector(): () => void {
         toRotateX(-ny * 3.1);
         toZ(5);
       };
-      const reset = (): void => { toRotateX(0); toRotateY(0); toZ(0); };
+      const graphic = project.querySelector<HTMLElement>(".project__graphic");
+      const artwork = graphic?.querySelector<HTMLElement>(".risk-map, .graph-art, .terminal-sheet, .newspaper-sample, .signal-watch-art");
+      const artX = artwork ? gsap.quickTo(artwork, "x", { duration: 0.42, ease: "power3.out" }) : null;
+      const artY = artwork ? gsap.quickTo(artwork, "y", { duration: 0.42, ease: "power3.out" }) : null;
+      const onArtworkMove = (event: PointerEvent): void => {
+        if (!graphic) return;
+        const rect = graphic.getBoundingClientRect();
+        const nx = clamp((event.clientX - rect.left) / rect.width, 0, 1);
+        const ny = clamp((event.clientY - rect.top) / rect.height, 0, 1);
+        graphic.style.setProperty("--inspect-x", (nx * 100).toFixed(1) + "%");
+        graphic.style.setProperty("--inspect-y", (ny * 100).toFixed(1) + "%");
+        artX?.((nx - 0.5) * 15);
+        artY?.((ny - 0.5) * 11);
+      };
+      const reset = (): void => {
+        toRotateX(0); toRotateY(0); toZ(0); artX?.(0); artY?.(0);
+        graphic?.style.setProperty("--inspect-x", "50%");
+        graphic?.style.setProperty("--inspect-y", "50%");
+      };
+      graphic?.addEventListener("pointermove", onArtworkMove, { passive: true });
       project.addEventListener("pointermove", onProjectMove, { passive: true });
       project.addEventListener("pointerleave", reset);
       cleanups.push(() => {
         project.removeEventListener("pointermove", onProjectMove);
+        graphic?.removeEventListener("pointermove", onArtworkMove);
         project.removeEventListener("pointerleave", reset);
         gsap.set(project, { clearProps: "transform,transformPerspective" });
       });
