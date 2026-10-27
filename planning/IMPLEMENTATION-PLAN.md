@@ -34,7 +34,7 @@
 The exact layout can adapt to the current repo, but keep concerns separated:
 
 - src/pages/index.astro — semantic page shell and real content.
-- src/components/DualText.astro — canonical text plus an inaccessible visual mutation overlay.
+- src/components/DualText.astro — canonical text plus an aria-hidden decorative mutation overlay.
 - src/components/ProjectField.astro — project wrapper with stable source links and local-pressure target.
 - src/components/FieldDiagram.astro — original SVG diagrams, each tied to project substance.
 - src/lib/entropy/types.ts — typed inputs/state/config.
