@@ -18,7 +18,7 @@ The game is a source of emotional direction, not a visual kit. The transferable 
 - No direct recreation of Belle Époque, Art Deco, steampunk, ornamental gold filigree, or French-fantasy architecture.
 - No game screenshots, logos, sounds, motifs, official concept art, or look-alike assets.
 
-The last art board is an **atmosphere/material study only**. Do not lift its central texture as the portfolio's hero illustration. The actual visual signature should be built from registration drift, ink spread, signal traces, measured marks, and procedural typography—not a cracked monolith or floating stone.
+The separately shared exploratory moodboard is an **atmosphere/material study only**. Do not lift its central texture as the portfolio's hero illustration. The actual visual signature should be built from registration drift, ink spread, signal traces, measured marks, and procedural typography—not a cracked monolith or floating stone.
 
 ## The original metaphor: two printing plates
 
