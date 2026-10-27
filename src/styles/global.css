@@ -719,3 +719,44 @@ body.is-recovering .entry__field {
   .project__graphic, .project__content h3 { transform: none !important; }
   .project__graphic::after { display: none; }
 }
+
+
+.scroll-progress {
+  position: fixed;
+  z-index: 45;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  overflow: hidden;
+  pointer-events: none;
+  background: rgba(233,226,214,.055);
+}
+
+.scroll-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--amber), var(--rust));
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+  box-shadow: 0 0 10px rgba(209,161,91,.32);
+}
+
+.work .section-side {
+  align-self: start;
+}
+
+@media (min-width: 761px) {
+  .work .section-side {
+    position: sticky;
+    top: 19vh;
+    min-height: 240px;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
+}
