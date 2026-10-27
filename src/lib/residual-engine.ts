@@ -69,7 +69,6 @@ export function startResidualEngine(): () => void {
   const body = document.body;
   const profile = readProfile();
   const now = () => performance.now();
-  const started = now();
   let pressure = 0;
   let chaotic = 0.2 + Math.random() * 0.6;
   let attractorR = 3.82;
@@ -201,7 +200,7 @@ export function startResidualEngine(): () => void {
       scrollAcceleration *= Math.exp(-modelDt * 3.2);
 
       const normalRecovery = profile.baseRecovery;
-      const currentRecovery = recovering ? Math.max(normalRecovery, 1.4) : normalRecovery;
+      const currentRecovery = timestamp < recoveryUntil ? Math.max(normalRecovery, 1.4) : normalRecovery;
       const kAttack = 2.8;
       const lambda = kAttack * input + currentRecovery;
       const equilibrium = lambda > 0 ? (kAttack * input) / lambda : 0;
@@ -265,7 +264,7 @@ export function startResidualEngine(): () => void {
     root.style.setProperty("--pointer-y", lastPointerY.toFixed(1) + "px");
 
     const target = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-entropy-region], [data-alien='true']") : null;
-    const region = target ? regions.find(item => item.element === target || item.element.contains(target)) || null : null;
+    const region = target ? (regions.find(item => item.element === target) || regions.find(item => item.element.contains(target)) || null) : null;
     setActiveRegion(region);
     if (!region) proximity = 0;
     wake();
