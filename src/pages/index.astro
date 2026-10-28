@@ -121,7 +121,42 @@ import "../styles/global.css";
         </div>
       </section>
 
-      <section class="about section-split" id="about" aria-labelledby="about-title">
+      <section class="duality-stage" aria-labelledby="duality-stage-title">
+        <div class="duality-stage__intro">
+          <p class="eyebrow"><span class="eyebrow__pulse"></span> A small experiment</p>
+          <h2 id="duality-stage-title">Same words.<br /><em>Different state.</em></h2>
+          <p>Drag the seam. This is only a specimen of the two layers — the rest of the site will respond to your actual movement.</p>
+        </div>
+        <div class="duality-stage__frame" data-compare style="--compare-position: 52%">
+          <div class="duality-stage__plane duality-stage__plane--order">
+            <span class="duality-stage__label">01 / ORDER</span>
+            <p>It works<br /><em>until it doesn't.</em></p>
+            <svg viewBox="0 0 580 160" aria-hidden="true">
+              <path d="M0 88H75L94 77L111 98L132 61L151 112L170 88H235L254 83L274 88H342L360 78L382 95L402 88H580" fill="none" stroke="#111426" stroke-opacity=".38" stroke-width="1.5"/>
+              <path d="M0 110H580M0 54H580" fill="none" stroke="#111426" stroke-opacity=".13" stroke-dasharray="3 8"/>
+              <circle cx="132" cy="61" r="4" fill="#6574FF"/><circle cx="382" cy="95" r="4" fill="#FF735C"/>
+            </svg>
+            <small>source text / legible / recoverable</small>
+          </div>
+          <div class="duality-stage__plane duality-stage__plane--residue" data-compare-residue aria-hidden="true">
+            <span class="duality-stage__label">02 / RESIDUE</span>
+            <p>It w0rks<br /><em>unƚɪl ɪƚ d0esn't.</em></p>
+            <svg viewBox="0 0 580 160" aria-hidden="true">
+              <path d="M0 88H75L94 77L111 98L132 61L151 112L170 88H235L254 83L274 88H342L360 78L382 95L402 88H580" fill="none" stroke="#111426" stroke-opacity=".72" stroke-width="2"/>
+              <path d="M0 92H62L80 105L101 65L129 119L148 69L170 91H233L254 99L275 75L290 101H350L366 69L391 105L406 86H580" fill="none" stroke="#6574FF" stroke-width="1.5"/>
+              <path d="M0 76H580M0 121H580" fill="none" stroke="#111426" stroke-opacity=".2" stroke-dasharray="2 5"/>
+              <circle cx="132" cy="61" r="5" fill="#D7FF43"/><circle cx="382" cy="95" r="6" fill="#FF735C"/>
+            </svg>
+            <small>residual layer / interference / trying to return</small>
+          </div>
+          <div class="duality-stage__seam" data-compare-handle aria-hidden="true"><span></span></div>
+          <label class="duality-stage__slider-label" for="compare-slider">Reveal the residual layer</label>
+          <input id="compare-slider" class="duality-stage__slider" type="range" min="8" max="92" value="52" step="1" aria-label="Reveal more or less of the residual visual layer" />
+        </div>
+        <p class="duality-stage__note"><span>← ORDER</span><span>Drag the handle</span><span>RESIDUE →</span></p>
+      </section>
+
+      <section class="about section-split" aria-labelledby="about-title">
         <div class="section-side">
           <p class="eyebrow">A bit about the work</p>
           <span class="side-note">Not a manifesto.</span>
