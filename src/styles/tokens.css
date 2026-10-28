@@ -22,6 +22,7 @@
   --mono: "DM Mono", monospace;
   --ease: cubic-bezier(.2,.75,.25,1);
   --ease-spring: cubic-bezier(.2,1.25,.35,1);
+  --section-glow: #D7FF43;
   --pressure: 0;
   --pointer-x: 65vw;
   --pointer-y: 20vh;
