@@ -218,6 +218,181 @@ export function startMotionDirector(): () => void {
     });
   }
 
+  // Color follows the active region: not a theme toggle, but a moving field of light.
+  const sectionGlow = gsap.quickTo(document.documentElement, "--section-glow", { duration: 0.8, ease: "power2.out" });
+  const glowMap: Array<[string, string]> = [
+    [".entry", "#6574FF"],
+    [".project-index", "#D7FF43"],
+    [".duality-stage", "#FF735C"],
+    [".about", "#B9A6FF"],
+    [".work", "#6574FF"],
+    [".experience", "#65E5D6"],
+    [".contact", "#D7FF43"],
+  ];
+  glowMap.forEach(([selector, color]) => {
+    const section = document.querySelector<HTMLElement>(selector);
+    if (!section) return;
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top 52%",
+      end: "bottom 52%",
+      onEnter: () => sectionGlow(color),
+      onEnterBack: () => sectionGlow(color),
+    });
+  });
+
+  // The colorful project index is a real draggable rail with a little release inertia.
+  const rail = document.querySelector<HTMLElement>("[data-drag-index]");
+  if (rail) {
+    let pointerStartX = 0;
+    let scrollStart = 0;
+    let lastX = 0;
+    let lastAt = 0;
+    let velocity = 0;
+    let dragging = false;
+    let dragIntent = false;
+    let inertiaFrame = 0;
+    let suppressClickUntil = 0;
+
+    const stopInertia = (): void => {
+      if (inertiaFrame) cancelAnimationFrame(inertiaFrame);
+      inertiaFrame = 0;
+    };
+    const onRailDown = (event: PointerEvent): void => {
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      stopInertia();
+      pointerStartX = event.clientX;
+      scrollStart = rail.scrollLeft;
+      lastX = event.clientX;
+      lastAt = performance.now();
+      velocity = 0;
+      dragging = true;
+      dragIntent = false;
+    };
+    const onRailMove = (event: PointerEvent): void => {
+      if (!dragging) return;
+      const dx = event.clientX - pointerStartX;
+      if (!dragIntent && Math.abs(dx) > 6) {
+        dragIntent = true;
+        rail.classList.add("is-dragging");
+        rail.setPointerCapture?.(event.pointerId);
+      }
+      if (!dragIntent) return;
+      event.preventDefault();
+      rail.scrollLeft = scrollStart - dx;
+      const timestamp = performance.now();
+      const elapsed = Math.max(timestamp - lastAt, 1);
+      velocity = (lastX - event.clientX) / elapsed * 16;
+      lastX = event.clientX;
+      lastAt = timestamp;
+    };
+    const releaseInertia = (): void => {
+      const step = (): void => {
+        inertiaFrame = 0;
+        if (Math.abs(velocity) < 0.12 || !rail) return;
+        rail.scrollLeft += velocity;
+        velocity *= 0.93;
+        inertiaFrame = requestAnimationFrame(step);
+      };
+      inertiaFrame = requestAnimationFrame(step);
+    };
+    const onRailUp = (): void => {
+      if (!dragging) return;
+      dragging = false;
+      rail.classList.remove("is-dragging");
+      if (dragIntent) {
+        suppressClickUntil = performance.now() + 260;
+        releaseInertia();
+      }
+    };
+    const onRailClick = (event: MouseEvent): void => {
+      if (performance.now() < suppressClickUntil) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    };
+    const onRailWheel = (event: WheelEvent): void => {
+      if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+        rail.scrollLeft += event.deltaX;
+      }
+    };
+    rail.addEventListener("pointerdown", onRailDown, { passive: true });
+    rail.addEventListener("pointermove", onRailMove, { passive: false });
+    window.addEventListener("pointerup", onRailUp, { passive: true });
+    window.addEventListener("pointercancel", onRailUp, { passive: true });
+    rail.addEventListener("click", onRailClick, true);
+    rail.addEventListener("wheel", onRailWheel, { passive: true });
+    cleanups.push(() => {
+      stopInertia();
+      rail.removeEventListener("pointerdown", onRailDown);
+      rail.removeEventListener("pointermove", onRailMove);
+      window.removeEventListener("pointerup", onRailUp);
+      window.removeEventListener("pointercancel", onRailUp);
+      rail.removeEventListener("click", onRailClick, true);
+      rail.removeEventListener("wheel", onRailWheel);
+    });
+
+    gsap.fromTo(".project-index__item", {
+      y: 42,
+      opacity: 0,
+      rotate: (index: number) => (index % 2 ? 3 : -2),
+    }, {
+      y: 0,
+      opacity: 1,
+      rotate: 0,
+      stagger: 0.065,
+      duration: 0.9,
+      ease: "back.out(1.45)",
+      scrollTrigger: { trigger: ".project-index", start: "top 86%", once: true },
+    });
+  }
+
+  // A Kigo-inspired before/after gesture, re-authored as Order vs Residue.
+  const compareFrame = document.querySelector<HTMLElement>("[data-compare]");
+  const compareSlider = document.querySelector<HTMLInputElement>("#compare-slider");
+  const compareHandle = document.querySelector<HTMLElement>("[data-compare-handle]");
+  if (compareFrame && compareSlider) {
+    const setCompare = gsap.quickTo(compareFrame, "--compare-position", { duration: 0.12, ease: "power2.out" });
+    const updateCompare = (): void => {
+      const value = clamp(Number(compareSlider.value), 8, 92);
+      compareFrame.style.setProperty("--compare-position", value + "%");
+      compareHandle?.style.setProperty("left", value + "%");
+      compareFrame.classList.add("is-comparing");
+    };
+    compareSlider.addEventListener("input", updateCompare);
+    compareSlider.addEventListener("change", () => compareFrame.classList.remove("is-comparing"));
+    compareSlider.addEventListener("pointerdown", () => compareFrame.classList.add("is-comparing"));
+    compareSlider.addEventListener("pointerup", () => compareFrame.classList.remove("is-comparing"));
+    compareSlider.addEventListener("keydown", () => {
+      setCompare(compareSlider.value + "%");
+    });
+    cleanups.push(() => {
+      compareSlider.removeEventListener("input", updateCompare);
+    });
+
+    gsap.fromTo(".duality-stage__intro", { x: -34, opacity: 0 }, {
+      x: 0, opacity: 1, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".duality-stage", start: "top 78%", once: true },
+    });
+    gsap.fromTo(compareFrame, { y: 45, rotate: 1.2, scale: .965, opacity: 0 }, {
+      y: 0, rotate: 0, scale: 1, opacity: 1,
+      duration: 1.15, ease: "power3.out",
+      scrollTrigger: { trigger: compareFrame, start: "top 83%", once: true },
+    });
+  }
+
+  // Project illustrations reveal as cropped artwork, then settle into their own color.
+  gsap.utils.toArray<HTMLElement>(".project__graphic").forEach((graphic, index) => {
+    gsap.fromTo(graphic, { clipPath: "inset(0 0 100% 0)", borderRadius: "0 0 44px 0" }, {
+      clipPath: "inset(0 0 0% 0)",
+      borderRadius: "0 0 0 0",
+      duration: 1.1,
+      ease: "power4.out",
+      delay: index % 2 ? .06 : 0,
+      scrollTrigger: { trigger: graphic, start: "top 88%", once: true },
+    });
+  });
+
   const sideNotes = gsap.utils.toArray<HTMLElement>(".section-side");
   sideNotes.forEach((element) => {
     gsap.fromTo(element, { x: -22, opacity: 0 }, {
