@@ -16,7 +16,7 @@ body {
   overflow-x: clip;
   color: var(--paper);
   background:
-    radial-gradient(ellipse at var(--pointer-x) var(--pointer-y), rgba(var(--section-glow-rgb, 215,255,67),.10), transparent 38rem),
+    radial-gradient(ellipse at var(--pointer-x) var(--pointer-y), color-mix(in srgb, var(--section-glow, #D7FF43) 10%, transparent), transparent 38rem),
     radial-gradient(ellipse at 5% 75%, rgba(101,116,255,.075), transparent 32rem),
     var(--ink);
   font-family: var(--sans);
@@ -1019,7 +1019,7 @@ body.is-recovering .entry__field {
 
 body {
   background:
-    radial-gradient(36rem ellipse at var(--pointer-x) var(--pointer-y), rgba(var(--section-glow-rgb, 215,255,67),.10), transparent 85%),
+    radial-gradient(36rem ellipse at var(--pointer-x) var(--pointer-y), color-mix(in srgb, var(--section-glow, #D7FF43) 10%, transparent), transparent 85%),
     radial-gradient(40rem ellipse at 5% 75%, rgba(101,116,255,.075), transparent 70%),
     var(--ink);
   transition: background-color 360ms ease;
