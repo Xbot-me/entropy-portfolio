@@ -776,7 +776,6 @@ body.is-recovering .entry__field {
 
 /* Brighter, more playful color rhythm — not a uniform dark portfolio. */
 :root {
-  --section-glow-rgb: 215,255,67;
 }
 
 .entry {
@@ -1047,4 +1046,34 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .project-index__item, .project-index__item::after { transition: none !important; }
   .duality-stage__plane, .duality-stage__seam { will-change: auto; }
+}
+
+
+/* A final color beat: the contact section becomes a bright, high-contrast landing. */
+.contact {
+  background:
+    radial-gradient(ellipse at 85% 15%, rgba(215,255,67,.15), transparent 40rem),
+    linear-gradient(125deg, #4657D6, #2B315F 78%);
+  border-top: 1px solid rgba(244,240,230,.17);
+}
+
+.contact .eyebrow,
+.contact__bottom > p {
+  color: rgba(244,240,230,.8);
+}
+
+.contact__aside { color: var(--amber); }
+.contact__ghost { color: rgba(244,240,230,.045); }
+.contact__email { border-bottom-color: var(--amber); }
+.contact__email:hover { color: var(--amber); }
+
+.project-index__item--blue:hover { background: #6574FF; }
+.project-index__item--dark:hover { background: #343B67; }
+
+@media (hover: hover) and (pointer: fine) {
+  .project-index__item:hover { box-shadow: 0 16px 36px rgba(17,20,38,.17); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-index__viewport { scroll-behavior: auto; }
 }
