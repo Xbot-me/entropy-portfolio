@@ -1077,3 +1077,31 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .project-index__viewport { scroll-behavior: auto; }
 }
+
+
+.project--perfkit .project__graphic--waterfall {
+  background: #B9A6FF;
+  border-color: rgba(17,20,38,.14);
+}
+
+.project--perfkit .project__graphic-index,
+.project--geo .project__graphic-index { color: #111426; }
+
+.project--perfkit .waterfall-art,
+.project--geo .geo-art { width: 100%; padding: .5rem; }
+
+.project--geo .project__graphic--network {
+  background: #65E5D6;
+  border-color: rgba(17,20,38,.14);
+}
+
+.project--perfkit .project__content h3,
+.project--geo .project__content h3 { text-wrap: balance; }
+
+.project--perfkit .project__graphic::after,
+.project--geo .project__graphic::after { mix-blend-mode: overlay; }
+
+@media (max-width: 760px) {
+  .project--perfkit .project__graphic--waterfall,
+  .project--geo .project__graphic--network { min-height: 250px; }
+}
