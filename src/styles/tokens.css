@@ -1,22 +1,27 @@
-/* Residual Signal — almost aligned, never perfectly still. */
+/* Residual Signal — a louder, more playful color instrument. */
 :root {
   color-scheme: dark;
-  --ink: #111315;
-  --ink-2: #181b1e;
-  --ink-3: #202326;
-  --paper: #e9e2d6;
-  --ash: #a6a196;
-  --dust: #6f706c;
-  --amber: #d1a15b;
-  --amber-pale: #ead0a3;
-  --blue: #738d9d;
-  --rust: #8a5a49;
-  --line: rgba(233, 226, 214, 0.14);
-  --line-strong: rgba(233, 226, 214, 0.28);
+  --ink: #111426;
+  --ink-2: #191c32;
+  --ink-3: #222640;
+  --paper: #F4F0E6;
+  --ash: #C0C0CA;
+  --dust: #898BA1;
+  --amber: #D7FF43;
+  --amber-pale: #ECFF9C;
+  --blue: #6574FF;
+  --rust: #FF735C;
+  --cyan: #65E5D6;
+  --lilac: #B9A6FF;
+  --surface-light: #E9E7DE;
+  --ink-light: #181B2E;
+  --line: rgba(244, 240, 230, 0.15);
+  --line-strong: rgba(244, 240, 230, 0.3);
   --sans: "Instrument Sans", "Noto Sans Bengali", system-ui, sans-serif;
   --serif: "Newsreader", "Noto Sans Bengali", Georgia, serif;
   --mono: "DM Mono", monospace;
   --ease: cubic-bezier(.2,.75,.25,1);
+  --ease-spring: cubic-bezier(.2,1.25,.35,1);
   --pressure: 0;
   --pointer-x: 65vw;
   --pointer-y: 20vh;
