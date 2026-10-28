@@ -221,13 +221,13 @@ export function startMotionDirector(): () => void {
   // Color follows the active region: not a theme toggle, but a moving field of light.
   const sectionGlow = gsap.quickTo(document.documentElement, "--section-glow", { duration: 0.8, ease: "power2.out" });
   const glowMap: Array<[string, string]> = [
-    [".entry", "#6574FF"],
-    [".project-index", "#D7FF43"],
-    [".duality-stage", "#FF735C"],
-    [".about", "#B9A6FF"],
-    [".work", "#6574FF"],
-    [".experience", "#65E5D6"],
-    [".contact", "#D7FF43"],
+    [".entry", "#F4B6C0"],
+    [".project-index", "#EE7188"],
+    [".duality-stage", "#E3C9CF"],
+    [".about", "#E7D7CD"],
+    [".work", "#DDE0F4"],
+    [".experience", "#E9D4C6"],
+    [".contact", "#C9304A"],
   ];
   glowMap.forEach(([selector, color]) => {
     const section = document.querySelector<HTMLElement>(selector);
@@ -352,7 +352,6 @@ export function startMotionDirector(): () => void {
   const compareSlider = document.querySelector<HTMLInputElement>("#compare-slider");
   const compareHandle = document.querySelector<HTMLElement>("[data-compare-handle]");
   if (compareFrame && compareSlider) {
-    const setCompare = gsap.quickTo(compareFrame, "--compare-position", { duration: 0.12, ease: "power2.out" });
     const updateCompare = (): void => {
       const value = clamp(Number(compareSlider.value), 8, 92);
       compareFrame.style.setProperty("--compare-position", value + "%");
@@ -363,9 +362,6 @@ export function startMotionDirector(): () => void {
     compareSlider.addEventListener("change", () => compareFrame.classList.remove("is-comparing"));
     compareSlider.addEventListener("pointerdown", () => compareFrame.classList.add("is-comparing"));
     compareSlider.addEventListener("pointerup", () => compareFrame.classList.remove("is-comparing"));
-    compareSlider.addEventListener("keydown", () => {
-      setCompare(compareSlider.value + "%");
-    });
     cleanups.push(() => {
       compareSlider.removeEventListener("input", updateCompare);
     });
@@ -583,7 +579,7 @@ export function startMotionDirector(): () => void {
       if (reduced || document.hidden) return;
       const count = burst ? (coarse ? 4 : 9) : Math.min(coarse ? 2 : 5, Math.floor(speed / 0.55));
       if (!count) return;
-      const colors = ["rgba(209,161,91,", "rgba(115,141,157,", "rgba(233,226,214,"];
+      const colors = ["rgba(201,48,73,", "rgba(77,93,187,", "rgba(238,113,136,"];
       for (let index = 0; index < count; index++) {
         const angle = Math.random() * Math.PI * 2;
         const kick = (burst ? 1.1 : 0.35) + Math.random() * (burst ? 3.3 : 1.5);
