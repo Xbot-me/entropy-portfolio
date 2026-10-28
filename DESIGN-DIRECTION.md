@@ -2,9 +2,9 @@
 
 ## The idea
 
-A human-made signal struggling to stay registered. English and Bangla are the readable source layer; alien mutation is a procedural underprint that slips out of alignment when the visitor pushes the page, then tries to line up again.
+A human-made signal struggling to stay registered. English and Bangla are the readable source layer; alien mutation is a procedural echo that slips out of alignment when the visitor pushes the page, then tries to line up again.
 
-At rest, the portfolio should feel deliberate, editorial, and almost still. Human input briefly disturbs that order; the visual system recovers.
+The site should not be still, but every motion has a job: introduce the voice, provide depth while scrolling, invite direct manipulation, make project work feel like a field to inspect, and return to a readable state.
 
 ## Original visual metaphor
 
@@ -15,40 +15,63 @@ Two printing plates almost align:
 
 Behavior pushes the residual plate away from alignment. Recovery draws it back. The visitor does not switch between two pages; their behavior changes the tension between two layers of the same page.
 
-## Relationship to Clair Obscur: Expedition 33
+## Inspiration boundaries
 
-The game is an emotional reference for contrast, selective light, and beauty under strain only. Do not reproduce its characters, environments, architecture, objects, motifs, typography, UI, HUD, soundtrack, or official artwork. Do not use a monolith, painter figure, expedition motif, or Belle Époque/Art Deco imitation as the site's signature.
+### Kigo Studio
+The inspiration is interaction-level: bold typography that moves, a clear work showcase, comparison as a direct manipulation gesture, and visual sections with different rhythms. Our versions are a drag-inertia project index, an Order/Residue comparison, scroll color choreography, pointer-directed project art, and residual trails.
 
-The portfolio's own vocabulary is signal interference, print registration drift, ink spread, contour traces, and procedural typography. The shared mood must not become a copied visual identity.
+Do not reproduce Kigo's specific layouts, illustrations, images, branding, text, or exact interaction timings. Every visual should derive from Mustafizur's own work and the signal/registration metaphor.
 
-## Art direction
+### Clair Obscur: Expedition 33
+The game is an emotional reference for contrast, selective light, and beauty under strain only. Do not reproduce its characters, environments, architecture, objects, motifs, typography, UI, HUD, soundtrack, or official artwork. No monolith, painter figure, expedition motif, or Belle Époque/Art Deco imitation.
 
-- Near-black ink, warm paper, restrained amber, cool steel-blue, and a rare rust tone.
-- Expressive serif display type; plain, readable sans-serif body text; monospaced technical annotations.
-- Verify Bengali font support and shaping in actual browser output. Never apply Latin letter-spacing rules to Bangla.
-- Use asymmetrical composition and distinct project-specific visuals, not a uniform grid of generic cards.
-- Generate the residual layer locally with DOM/CSS/SVG at first. Add Canvas or WebGL only when a specific effect justifies it.
-- Grain and interference remain subtle at rest. Contrast and local fragments intensify only under meaningful interaction.
+## Color system
 
-## Interaction
+- **Midnight navy** #111426: base and high-focus reading surfaces.
+- **Warm paper** #F4F0E6: text and occasional light surfaces.
+- **Acid lime** #D7FF43: primary active accent; signal spike, highlight, or drag target.
+- **Electric periwinkle** #6574FF: the counter-tone and some project surfaces.
+- **Coral** #FF735C: interruption, risk, or high-pressure detail.
+- **Sea-glass cyan** #65E5D6: flow, connection, and network detail.
+- **Soft lilac** #B9A6FF: analysis and performance surfaces.
+- **Dust** #898BA1: metadata and quiet notes.
 
-- Scroll velocity, acceleration, direction changes, pointer motion, proximity, dwell, taps, and keyboard navigation feed the pressure model.
-- A bounded pressure state controls effect intensity. A driven logistic map supplies irregularity; it does not become a license for unbounded randomness.
-- Local regions respond separately; a visitor should be able to disturb one project without destroying the whole layout.
-- The page returns to readable order after the visitor stops interacting.
-- Mobile has a lower intensity ceiling and faster decay.
-- Respect reduced motion, keyboard access, text selection, and screen readers.
-- No sound autoplay. Sound is opt-in and can be disabled immediately.
-- Do not deliberately degrade event handling or create real layout failures to simulate imperfection.
+Use colored surfaces as punctuation rather than painting the entire page one color. Each work item gets a surface and motion treatment that reflects its subject. Keep high-contrast reading areas and never make color the only indicator of state.
 
-## Content voice
+## Typography
 
-- Lead with operational reality and specific decisions.
-- Use English for all critical information.
-- Use selective Bangla where it adds a real personal cadence, with English context when needed.
-- Avoid grandiose claims, fake vulnerability, generic AI slogans, anime/cosplay framing, and fake terminal output.
-- Treat numbers as evidence. Keep unverified claims out of public copy until confirmed.
+- Newsreader for expressive, large editorial lines.
+- Instrument Sans for the body and UI.
+- DM Mono for tiny field labels and status details.
+- Noto Sans Bengali for verified Bengali character coverage.
+- Avoid tracking adjustments that break Bengali shaping.
+- Kinetic splitting is decorative. Preserve the semantic text and test screen readers and copy/select in a real browser.
 
-## Definition of success
+## Motion language
 
-The page should make a visitor think, “This feels authored,” before they think about the animation. A reader can understand the work without interacting. The chaos can be explored without getting trapped in it, and the underlying code remains deterministic enough to test.
+1. **Entry:** linework draws in; the hero arrives character by character with physical depth, then the supporting text follows.
+2. **Scroll:** the hero artwork travels at a different depth; project art reveals in a vertical wipe; headings and content enter with staggered, non-identical timing.
+3. **Direct manipulation:** drag the project index and let it coast; move through an Order/Residue comparison; inspect project visuals with pointer tilt and a moving light.
+4. **Pressure:** the current engine briefly mutates the visual echo and emits tiny canvas marks on fast pointer movement/clicks. It decays; it does not leave the site broken.
+5. **Color:** ambient light changes as different sections enter the active region, adding visual rhythm across the page.
+6. **Recovery:** geometry and contrast settle before the final fine texture disappears.
+
+Use GSAP/ScrollTrigger for choreographed entrances and parallax, Lenis for restrained desktop wheel inertia, and the custom pressure engine for input-driven chaos. Touch retains native scrolling. Do not deliberately drop frames or break scrolling to simulate imperfection.
+
+## Content voice and evidence
+
+- Use English for essential information; place selective Bangla where it adds a natural personal voice.
+- Lead with specific production work and verifiable projects rather than generic capability claims.
+- Include the full public project set: SentinelGuard, Repo-Brain, Signal Watch (private source / walkthrough on request), PulseDeploy, PerfKit, KhojBangla, and GeoProspector AI.
+- The experience record includes Kpop USA, independent consulting, and agency work before 2020.
+- The original portfolio reports 99.9% uptime, 236,000+ orders, 134,000+ customer accounts, 200+ projects, and 6+ years. Keep platform outcomes distinct from personal action and never invent additional metrics.
+- Contact email and LinkedIn must point to the original portfolio's actual values, not guessed addresses.
+
+## Accessibility and mobile
+
+- Native scrolling on touch devices; lower entropy and fewer hover-only effects.
+- Drag rail retains horizontal touch scrolling and keyboard access.
+- The compare gesture is a semantic range input.
+- Project links and contact remain usable throughout.
+- Reduced motion disables the elaborate choreography and canvas trails without hiding core content.
+- Test Bengali shaping, screen readers, keyboard navigation, 320 px widths, zoom, high-refresh displays, and physical devices.
