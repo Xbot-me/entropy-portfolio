@@ -1,8 +1,14 @@
 # Mustafizur Rahman — Residual Signal
 
-An experimental personal portfolio built around **Order ↔ Chaos**. The visual metaphor is two almost-aligned printing plates: readable content stays intact while a procedural echo briefly drifts under interaction, then recovers.
+An experimental personal portfolio built around **Order ↔ Residue**. The readable source layer stays intact while a procedural echo drifts under interaction, then recovers.
 
-The influence from *Clair Obscur: Expedition 33* is limited to the abstract principle of contrast and selective light. No game characters, objects, environments, typography, UI, soundtrack, or official assets are used. The portfolio's own visual language is signal interference, damaged print registration, and procedural type.
+## Direction
+
+The new art direction pairs midnight navy with acid lime, saturated periwinkle blue, coral, sea-glass cyan, and warm paper. Motion is part of the information design: kinetic typography, section-linked ambient color, a draggable project index with release inertia, an interactive Order/Residue comparison, scroll-linked parallax, project-art reveals, pointer tilt, an inspection lens, and short-lived residual trails.
+
+The inspiration from Kigo Studio is limited to broad interaction principles—bold moving typography, direct manipulation, work showcases, and comparison gestures. This implementation uses its own project visuals and motion language. It does not copy their layouts, artwork, assets, or branding.
+
+The influence from *Clair Obscur: Expedition 33* remains limited to contrast and selective light. No game characters, objects, environments, typography, UI, soundtrack, or official assets are used.
 
 ## Run locally
 
@@ -22,16 +28,16 @@ Astro builds a static site into dist/. No server-side Worker is required for the
 - Build command: npm run build
 - Build output directory: dist/
 
-Only add a Worker if a real server-side feature needs one. Pointer tracking, scroll response, audio, and session-only effects can run client-side.
+GSAP/ScrollTrigger choreograph motion; Lenis adds desktop wheel inertia; the custom TypeScript engine drives bounded pressure and the procedural text echo. Touch devices retain native scrolling. Reduced-motion preferences are respected.
 
-## Interaction principles
+## Interaction contract
 
-- Real project content and links remain readable without JavaScript.
-- Behavior raises a bounded pressure value; it does not replace the original content.
-- A driven logistic map provides visual irregularity, while pressure decides how much can be seen.
-- The visual system returns toward order when the visitor stops interacting.
-- Mobile, Save-Data, and reduced-motion profiles are constrained.
-- The accessible copy and all functional links remain canonical; the alien layer is decorative.
-- Sound is not yet implemented; no inactive sound control is shown.
+- Essential content and links are present as semantic HTML.
+- The project index is draggable and horizontally scrollable by touch, keyboard, and trackpad.
+- The Order/Residue comparison is keyboard-adjustable using its range input.
+- Residual trails are created only by active pointer movement/clicks and fade away.
+- The pressure engine recovers instead of holding the site in a permanent high-chaos state.
+- The visitor can still read, select, and follow the real content when effects are unavailable.
+- Sound is not implemented yet; no fake sound control is shown.
 
-See planning/README.md for the current planning pack and planning/ART-DIRECTION.md for the originality guardrails.
+See planning/README.md and DESIGN-DIRECTION.md for the longer constraints and originality rules.
